@@ -1,8 +1,21 @@
 package com.psi.project.user.valueobjects;
 
 import com.psi.project.user.exceptions.IllegalEmailException;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+
+@Embeddable
+@ToString
+@NotNull
+@NoArgsConstructor
+@EqualsAndHashCode
 public class EmailValidator {
 
     private static final String EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+" +

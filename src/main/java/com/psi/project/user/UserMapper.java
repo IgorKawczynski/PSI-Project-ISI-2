@@ -1,6 +1,6 @@
 package com.psi.project.user;
 
-public class UserService {
 
+public class UserMapper {
 
 }

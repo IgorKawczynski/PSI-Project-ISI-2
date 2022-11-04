@@ -131,38 +131,40 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>8.0.0</version>
                 <configuration>
-                    <user>sssss</user>
-                    <password>sssss</password>
-                    <url>jdbc:mysql://localhost:3306/store</url>
+                    <user>root</user>
+                    <password>qwerty</password>
+                    <url>jdbc:mysql://localhost:3306/?user=root</url>
+                    <defaultSchema>public</defaultSchema>
                     <schemas>
                         <schema>public</schema>
                     </schemas>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>cz.habarta.typescript-generator</groupId>
-                <artifactId>typescript-generator-maven-plugin</artifactId>
-                <version>2.35.1025</version>
-                <executions>
-                    <execution>
-                        <id>generate</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <phase>process-classes</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <jsonLibrary>jackson2</jsonLibrary>
-                    <classPatterns>
-                        <pattern>com.psi.users.dtos.*</pattern>
-                        <pattern>com.psi.items.dtos.*</pattern>
-                        <pattern>com.psi.trade.dtos.*</pattern>
-                    </classPatterns>
-                    <outputKind>module</outputKind>
-                    <mapEnum>asEnum</mapEnum>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>cz.habarta.typescript-generator</groupId>-->
+<!--                <artifactId>typescript-generator-maven-plugin</artifactId>-->
+<!--                <version>2.35.1025</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>generate</id>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>process-classes</phase>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <jsonLibrary>jackson2</jsonLibrary>-->
+<!--                    <classPatterns>-->
+<!--                        <pattern>com.psi.users.dtos.*</pattern>-->
+<!--                        <pattern>com.psi.items.dtos.*</pattern>-->
+<!--                        <pattern>com.psi.trade.dtos.*</pattern>-->
+<!--                        <pattern>com.psi.address.dtos.*</pattern>-->
+<!--                    </classPatterns>-->
+<!--                    <outputKind>module</outputKind>-->
+<!--                    <mapEnum>asEnum</mapEnum>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

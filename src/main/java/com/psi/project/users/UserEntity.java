@@ -1,6 +1,6 @@
 package com.psi.project.users;
 
-import com.psi.project.basic.BasicEntity;
+import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,19 +8,23 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  *
  * Encja użytkownika systemu
  *
  */
-@Table(name = "USERS")
+@Table(name = "users")
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Entity
-public class UserEntity extends BasicEntity {
+public class UserEntity{
 
+
+    @Id
+    private Integer id;
     @Embedded
     @Column(unique = true)
     private EmailValidator email;
@@ -32,6 +36,9 @@ public class UserEntity extends BasicEntity {
     private PeselValidator pesel;
     @Embedded
     private TypeValidator type;
+
+    @OneToMany(mappedBy = "itemId", fetch = FetchType.LAZY)
+    private List<ItemEntity> itemsEntities;
 
     @Builder
     public UserEntity(

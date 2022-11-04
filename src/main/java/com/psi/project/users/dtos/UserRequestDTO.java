@@ -1,4 +1,4 @@
-package com.psi.project.user.dtos;
+package com.psi.project.users.dtos;
 
 import lombok.Builder;
 

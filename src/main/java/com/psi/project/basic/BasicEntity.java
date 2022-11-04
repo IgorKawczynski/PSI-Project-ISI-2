@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Setter
 public class BasicEntity {
 
-    public static final String SEQUENCE_NAME = "id_seq";
+    public static final String ID_NAME = "id_sequence";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "base_generator")
-    @SequenceGenerator(name = "base_generator", sequenceName = SEQUENCE_NAME, allocationSize = 1)
+    @SequenceGenerator(name = "base_generator", sequenceName = ID_NAME, allocationSize = 1)
     protected Long id;
 
 }

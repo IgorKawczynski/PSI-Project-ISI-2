@@ -1,4 +1,4 @@
-package com.psi.project.user.exceptions;
+package com.psi.project.users.exceptions;
 
 public class IllegalEmailException extends IllegalArgumentException{
 

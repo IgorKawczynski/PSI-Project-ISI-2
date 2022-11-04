@@ -1,9 +1,8 @@
-package com.psi.project.user.valueobjects;
+package com.psi.project.users.valueobjects;
 
-import com.psi.project.user.exceptions.IllegalEmailException;
+import com.psi.project.users.exceptions.IllegalEmailException;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Embeddable;

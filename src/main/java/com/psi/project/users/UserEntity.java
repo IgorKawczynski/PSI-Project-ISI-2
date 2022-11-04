@@ -1,6 +1,7 @@
-package com.psi.project.user;
+package com.psi.project.users;
 
-import com.psi.project.user.valueobjects.*;
+import com.psi.project.basic.BasicEntity;
+import com.psi.project.users.valueobjects.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,17 +9,22 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Table(name = "USER")
+/**
+ *
+ * Encja użytkownika systemu
+ *
+ */
+@Table(name = "USERS")
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class UserEntity {
+@Entity
+public class UserEntity extends BasicEntity {
 
     @Embedded
     @Column(unique = true)
     private EmailValidator email;
     @Embedded
-    @AttributeOverrides( {@AttributeOverride(name = "name", column = @Column(name = "first_name"))} )
     private NameValidator name;
     @Embedded
     private PasswordValidator password;

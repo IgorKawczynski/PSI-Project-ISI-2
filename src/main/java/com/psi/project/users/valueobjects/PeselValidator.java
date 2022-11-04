@@ -1,8 +1,7 @@
-package com.psi.project.user.valueobjects;
+package com.psi.project.users.valueobjects;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Column;

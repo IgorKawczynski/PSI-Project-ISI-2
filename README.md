@@ -1,6 +1,6 @@
-Repository created to the needs of "Programming services" subject :computer: :computer:
-It's implementation of web service to help managing the Auction House store.
-Clients there can buy or either sell items from categories like sports, rtv+agd, furniture, jewelry...
+<br> Repository created to the needs of "Programming services" subject :computer: :computer:
+<br> It's implementation of web service to help managing the Auction House store.
+<br> Clients there can buy or either sell items from categories like sports, rtv+agd, furniture, jewelry...
 
 TEAM :
 1. Igor Kawczyński :computer:

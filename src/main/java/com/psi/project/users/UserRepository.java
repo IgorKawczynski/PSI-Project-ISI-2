@@ -10,6 +10,7 @@ import java.util.Optional;
 /**
  *
  * Repozytorium JPA użytkownika
+ * @author Igor Kawczyński
  *
  */
 @Repository

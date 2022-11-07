@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * Kontroler typu REST przedmiotów sprzedaży
+ * @author Igor Kawczyński
  *
  */
 @RestController

@@ -8,28 +8,26 @@ import com.psi.project.items.valueobjects.StatusValidator;
 import com.psi.project.trade.TradeEntity;
 import com.psi.project.users.UserEntity;
 import com.psi.project.users.valueobjects.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 import javax.persistence.*;
 
 /**
- *
- * Encja przedmiotów sprzedaży
- *
+ *  Encja przedmiotów sprzedaży
+ *  @author Igor Kawczynski
  */
 @Table(name = "items")
 @Getter
 @Setter
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class ItemEntity{
 
     @Id
-    private Integer id;
+    Integer id;
     @Embedded
     NameValidator name;
     @Embedded
@@ -47,13 +45,13 @@ public class ItemEntity{
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     @LazyToOne(LazyToOneOption.NO_PROXY)
-    private UserEntity userId;
+    UserEntity userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trade_id", nullable = false)
     @JsonBackReference
     @LazyToOne(LazyToOneOption.NO_PROXY)
-    private TradeEntity tradeId;
+    TradeEntity tradeId;
 
     @Builder
     public ItemEntity(

@@ -1,5 +1,6 @@
 package com.psi.project.users.valueobjects;
 
+import com.psi.project.users.exceptions.IllegalPeselException;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -17,17 +18,16 @@ import java.util.Objects;
 public class PeselValidator {
 
     private static final String DIGITS = "[0-9]+";
-
     @Column
     private String pesel;
 
     public PeselValidator(String pesel) {
         if ( Objects.isNull(pesel) )
-            throw new IllegalArgumentException("Pesel can't be null!");
+            throw new IllegalPeselException("Pesel can't be null!");
         if ( !(pesel.length() == 11) )
-            throw new IllegalStateException("Pesel must have 11 digits!");
+            throw new IllegalPeselException("Pesel must have exactly 11 digits!");
         if ( !pesel.contains(DIGITS) )
-            throw new IllegalArgumentException("Pesel may contain only digits!");
+            throw new IllegalPeselException("Pesel may contain only digits!");
         this.pesel = pesel;
     }
 }

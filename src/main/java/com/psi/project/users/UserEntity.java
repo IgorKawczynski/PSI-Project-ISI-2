@@ -2,10 +2,8 @@ package com.psi.project.users;
 
 import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,32 +11,34 @@ import java.util.List;
 /**
  *
  * Encja użytkownika systemu
+ * @author Igor Kawczyński
  *
  */
 @Table(name = "users")
 @Getter
 @Setter
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class UserEntity{
 
 
     @Id
-    private Integer id;
+    Integer id;
     @Embedded
     @Column(unique = true)
-    private EmailValidator email;
+    EmailValidator email;
     @Embedded
-    private NameValidator name;
+    NameValidator name;
     @Embedded
-    private PasswordValidator password;
+    PasswordValidator password;
     @Embedded
-    private PeselValidator pesel;
+    PeselValidator pesel;
     @Embedded
-    private TypeValidator type;
+    TypeValidator type;
 
     @OneToMany(mappedBy = "itemId", fetch = FetchType.LAZY)
-    private List<ItemEntity> itemsEntities;
+    List<ItemEntity> itemsEntities;
 
     @Builder
     public UserEntity(

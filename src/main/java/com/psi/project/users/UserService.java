@@ -11,7 +11,8 @@ import java.util.NoSuchElementException;
 
 /**
  *
- * Web Serwis użytkownika
+ *  Web Serwis użytkownika
+ *  @author Igor Kawczyński
  *
  */
 @Service

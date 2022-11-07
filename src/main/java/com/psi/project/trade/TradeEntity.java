@@ -16,6 +16,6 @@ import javax.persistence.Table;
 public class TradeEntity {
 
     @Id
-    private Integer id;
+    Integer id;
 
 }

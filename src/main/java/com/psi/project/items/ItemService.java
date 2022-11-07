@@ -13,7 +13,8 @@ import java.util.NoSuchElementException;
 
 /**
  *
- * Web Serwis przedmiotów sprzedaży
+ *  Web Serwis przedmiotów sprzedaży
+ *  @author Igor Kawczyński
  *
  */
 @Service

@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 
 /**
  *
- * Konwerter pomiędzy encją a obiektami typu data-transfer przedmiotów sprzedaży
+ *  Konwerter pomiędzy encją a obiektami typu data-transfer przedmiotów sprzedaży
+ *  @author Igor Kawczyński
  *
  */
 @Component

@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * Repozytorium JPA przedmiotów sprzedaży
+ *  Repozytorium JPA przedmiotów sprzedaży
+ *  @author Igor Kawczyński
  *
  */
 @Repository

@@ -11,6 +11,7 @@ import java.util.List;
 /**
  *
  * Kontroler typu REST użytkownika
+ * @author Igor Kawczyński
  *
  */
 @RestController

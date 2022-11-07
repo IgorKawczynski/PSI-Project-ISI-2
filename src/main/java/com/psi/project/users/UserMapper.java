@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 /**
  *
  * Konwerter pomiędzy encją a obiektami typu data-transfer użytkownika
+ * @author Igor Kawczyński
  *
  */
 @Component

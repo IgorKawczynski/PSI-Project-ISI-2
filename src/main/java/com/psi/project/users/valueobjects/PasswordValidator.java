@@ -3,9 +3,11 @@ package com.psi.project.users.valueobjects;
 import com.psi.project.basic.interfaces.BasicValidator;
 import com.psi.project.users.exceptions.IllegalEmailException;
 import com.psi.project.users.exceptions.IllegalPasswordException;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -19,6 +21,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Valid
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class PasswordValidator implements BasicValidator {
 
     @Column

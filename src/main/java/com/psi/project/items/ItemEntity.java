@@ -37,17 +37,17 @@ public class ItemEntity{
     @Embedded
     StatusValidator status;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id", nullable = false)
-//    @JsonBackReference
-//    @LazyToOne(LazyToOneOption.NO_PROXY)
-//    UserEntity userId;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id", nullable = false)
-//    @JsonBackReference
-//    @LazyToOne(LazyToOneOption.NO_PROXY)
-//    TradeEntity tradeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
+    @LazyToOne(LazyToOneOption.NO_PROXY)
+    UserEntity userId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trade_id", nullable = false)
+    @JsonBackReference
+    @LazyToOne(LazyToOneOption.NO_PROXY)
+    TradeEntity tradeId;
 
     @Builder
     public ItemEntity(
@@ -65,7 +65,7 @@ public class ItemEntity{
         this.price = price;
         this.category = category;
         this.status = status;
-//        this.userId = userId;
-//        this.tradeId = tradeId;
+        this.userId = userId;
+        this.tradeId = tradeId;
     }
 }

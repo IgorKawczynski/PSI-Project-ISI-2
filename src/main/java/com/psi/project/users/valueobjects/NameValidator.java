@@ -20,7 +20,7 @@ import java.util.Objects;
 public class NameValidator implements BasicValidator {
 
     @Column
-    private String username;
+    String username;
 
     public NameValidator(String username) {
         if( Objects.isNull(username) )

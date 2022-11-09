@@ -1,5 +1,6 @@
 package com.psi.project.users;
 
+import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -25,7 +26,6 @@ public class UserEntity{
     @Embedded
     @Column(unique = true)
     EmailValidator email;
-
     @Embedded
     NameValidator username;
     @Embedded
@@ -34,6 +34,9 @@ public class UserEntity{
     PeselValidator pesel;
     @Embedded
     TypeValidator type;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    List<ItemEntity> itemsEntities;
 
     @Builder
     public UserEntity(

@@ -19,7 +19,7 @@ public enum TypeValidator {
     @JsonProperty
     CLIENT();
 
-    private final String name = "";
+//    private final String name = "";
 
     @JsonCreator
     public static TypeValidator fromString(String string) {

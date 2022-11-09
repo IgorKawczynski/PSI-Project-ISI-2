@@ -17,7 +17,7 @@ public class ItemMapper {
 
     public ItemDTO fromItemEntityToItemDTO(ItemEntity itemEntity){
         return ItemDTO.builder()
-                .name(itemEntity.getName().toString())
+                .name(itemEntity.getItemName().toString())
                 .description(itemEntity.getDescription().toString())
                 .price(itemEntity.getPrice().toDouble())
                 .build();

@@ -1,10 +1,8 @@
 package com.psi.project.users;
 
-import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,18 +16,18 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserEntity{
-
 
     @Id
     Integer id;
     @Embedded
     @Column(unique = true)
     EmailValidator email;
+
     @Embedded
-    NameValidator name;
+    NameValidator username;
     @Embedded
     PasswordValidator password;
     @Embedded
@@ -37,19 +35,16 @@ public class UserEntity{
     @Embedded
     TypeValidator type;
 
-    @OneToMany(mappedBy = "itemId", fetch = FetchType.LAZY)
-    List<ItemEntity> itemsEntities;
-
     @Builder
     public UserEntity(
             EmailValidator email,
-            NameValidator name,
+            NameValidator username,
             PasswordValidator password,
             PeselValidator pesel,
             TypeValidator type
     ) {
         this.email = email;
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.pesel = pesel;
         this.type = type;

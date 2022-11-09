@@ -1,4 +1,4 @@
-package com.psi.project.users.valueobjects;
+package com.psi.project.items.valueobjects;
 
 import com.psi.project.basic.interfaces.BasicValidator;
 import com.psi.project.users.exceptions.IllegalNameException;
@@ -17,19 +17,19 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class NameValidator implements BasicValidator {
+public class ItemNameValidator implements BasicValidator {
 
-    @Column
-    private String username;
+    @Column(name = "item_name")
+    String itemName;
 
-    public NameValidator(String username) {
-        if( Objects.isNull(username) )
+    public ItemNameValidator(String itemName) {
+        if( Objects.isNull(itemName) )
             throw new IllegalNameException("NAME CANNOT BE NULL !!");
-        if( !containsPolishCharacters(username) )
+        if( !containsPolishCharacters(itemName) )
             throw new IllegalNameException("NAME MAY CONTAIN ONLY POLISH CHARACTERS !!");
-        if( !isValidLength(username, 1, 30) )
+        if( !isValidLength(itemName, 1, 30) )
             throw new IllegalNameException("NAME MUST BE BETWEEN 1 AND 30 CHARACTERS !!");
-        this.username = username;
+        this.itemName = itemName;
     }
 
 

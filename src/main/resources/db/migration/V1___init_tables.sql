@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.USERS
     `id`         INTEGER                  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `email`      VARCHAR(50)              NOT NULL,
     `password`   VARCHAR(255)             NOT NULL,
-    `name`       VARCHAR(30)              NULL,
+    `username`   VARCHAR(30)              NULL,
     `pesel`      VARCHAR(11)              NULL,
     `type`       ENUM ('ADMIN', 'CLIENT') NULL,
     `address_id` INT                      NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS public.TRADE
 CREATE TABLE IF NOT EXISTS public.ITEMS
 (
     `id`          INTEGER                                           NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name`        VARCHAR(45)                                       NOT NULL,
+    `item_name`   VARCHAR(45)                                       NOT NULL,
     `description` VARCHAR(255)                                      NULL,
     `price`       DOUBLE                                            NOT NULL,
     `category`    ENUM ('JEWELRY', 'SPORTS', 'FURNITURE', 'RTVAGD') NOT NULL,

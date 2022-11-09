@@ -19,7 +19,7 @@ public class UserMapper {
     public UserResponseDTO fromUserEntityToUserResponseDTO(UserEntity userEntity){
         return UserResponseDTO.builder()
                 .email(userEntity.getEmail().toString())
-                .name(userEntity.getName().toString())
+                .username(userEntity.getUsername().toString())
                 .pesel(userEntity.getPesel().toString())
                 .type(userEntity.getType().toString())
                 .build();
@@ -36,7 +36,7 @@ public class UserMapper {
         return UserRequestDTO.builder()
                 .email(userEntity.getEmail().toString())
                 .password(userEntity.getPassword().toString())
-                .name(userEntity.getName().toString())
+                .username(userEntity.getUsername().toString())
                 .pesel(userEntity.getPesel().toString())
                 .type(userEntity.getType().toString())
                 .build();

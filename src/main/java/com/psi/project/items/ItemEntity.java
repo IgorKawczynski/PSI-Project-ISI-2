@@ -10,6 +10,7 @@ import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  *  Encja przedmiotów sprzedaży
@@ -21,7 +22,7 @@ import javax.persistence.*;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class ItemEntity{
+public class ItemEntity implements Serializable {
 
     @Id
     Integer id;

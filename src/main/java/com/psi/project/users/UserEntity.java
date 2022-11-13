@@ -5,6 +5,7 @@ import com.psi.project.users.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity{
+public class UserEntity implements Serializable {
 
     @Id
     Integer id;

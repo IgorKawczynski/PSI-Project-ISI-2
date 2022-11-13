@@ -28,7 +28,6 @@ public class EmailValidator {
             "x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])";
     String email;
 
-
     public EmailValidator(String email) {
         if(Objects.isNull(email))
             throw new IllegalEmailException("Email is necessary !!");

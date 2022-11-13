@@ -18,10 +18,8 @@ import java.util.Objects;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NameValidator implements BasicValidator {
-
     @Column
     String username;
-
     public NameValidator(String username) {
         if( Objects.isNull(username) )
             throw new IllegalNameException("NAME CANNOT BE NULL !!");

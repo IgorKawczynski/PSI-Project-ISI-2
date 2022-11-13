@@ -1,5 +1,0 @@
-spring:
-  jpa:
-    properties:
-      hibernate:
-        default_schema: public

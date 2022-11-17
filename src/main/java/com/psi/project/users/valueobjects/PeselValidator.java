@@ -26,7 +26,7 @@ public class PeselValidator {
             throw new IllegalPeselException("Pesel can't be null!");
         if ( !(pesel.length() == 11) )
             throw new IllegalPeselException("Pesel must have exactly 11 digits!");
-        if ( !pesel.contains(DIGITS) )
+        if ( pesel.contains(DIGITS) )
             throw new IllegalPeselException("Pesel may contain only digits!");
         this.pesel = pesel;
     }

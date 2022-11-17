@@ -3,6 +3,7 @@ package com.psi.project.items;
 import com.psi.project.items.dtos.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,12 @@ public class ItemController {
     @ResponseStatus(HttpStatus.FOUND)
     public ItemDTO getItemById(@RequestParam("id") Long id) {
         return itemService.getItemById(id);
+    }
+
+    @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addItem(@RequestBody ItemEntity itemEntity) {
+        itemService.addItem(itemEntity);
     }
 
     @PatchMapping("")

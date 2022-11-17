@@ -1,5 +1,8 @@
 package com.psi.project.users;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.psi.project.address.AddressEntity;
+import com.psi.project.basic.BasicEntity;
 import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.*;
@@ -17,13 +20,11 @@ import java.util.List;
 @Table(name = "users")
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Entity
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity implements Serializable {
+public class UserEntity extends BasicEntity {
 
-    @Id
-    Integer id;
     @Embedded
     @Column(unique = true)
     EmailValidator email;
@@ -33,10 +34,15 @@ public class UserEntity implements Serializable {
     PasswordValidator password;
     @Embedded
     PeselValidator pesel;
-    @Embedded
+    @Enumerated(EnumType.STRING)
     TypeValidator type;
 
+    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonBackReference
+    AddressEntity addressId;
+
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonBackReference
     List<ItemEntity> itemsEntities;
 
     @Builder

@@ -1,6 +1,7 @@
 package com.psi.project.items;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.psi.project.basic.BasicEntity;
 import com.psi.project.items.valueobjects.*;
 import com.psi.project.trade.TradeEntity;
 import com.psi.project.users.UserEntity;
@@ -19,23 +20,21 @@ import java.io.Serializable;
 @Table(name = "items")
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class ItemEntity implements Serializable {
+public class ItemEntity extends BasicEntity {
 
-    @Id
-    Integer id;
     @Embedded
     ItemNameValidator itemName;
     @Embedded
     DescriptionValidator description;
     @Embedded
     PriceValidator price;
-    @Embedded
+    @Enumerated(EnumType.STRING)
     CategoryValidator category;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     StatusValidator status;
 
     @ManyToOne(fetch = FetchType.LAZY)

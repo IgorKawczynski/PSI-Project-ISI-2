@@ -1,4 +1,4 @@
-package com.psi.project.config;
+package com.psi.project.config.Web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

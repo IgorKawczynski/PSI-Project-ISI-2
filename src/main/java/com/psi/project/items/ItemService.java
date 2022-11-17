@@ -39,6 +39,10 @@ public class ItemService {
         return itemMapper.fromItemEntityToItemDTO(item);
     }
 
+    public void addItem(ItemEntity itemEntity) {
+        itemRepository.save(itemEntity);
+    }
+
     public String updateItemById(Long id, String description, Double price) {
         var item = itemRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Item with id: " + id + " does not exist!"));

@@ -2,9 +2,20 @@ package com.psi.project.items.valueobjects;
 
 import com.psi.project.basic.interfaces.BasicValidator;
 import com.psi.project.items.exceptions.IllegalDescriptionException;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
+@ToString
+@NoArgsConstructor
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DescriptionValidator implements BasicValidator {
 
     String description;

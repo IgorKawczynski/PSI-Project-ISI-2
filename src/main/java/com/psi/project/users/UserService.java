@@ -1,5 +1,6 @@
 package com.psi.project.users;
 
+import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
 import com.psi.project.users.valueobjects.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class UserService {
         var user = userRepository.findUserByEmail(new EmailValidator(email))
                 .orElseThrow(() -> new NoSuchElementException("UserEntity with email: " + email + " does not exist!"));
         return (UserResponseDTO) user;
+    }
+
+    public void addUser(UserRequestDTO userRequestDTO) {
+        var user = userMapper.fromUserRequestDTOToUserEntity(userRequestDTO);
+        userRepository.save(user);
     }
 
     public String updateUserEmail(Long id, EmailValidator email) {

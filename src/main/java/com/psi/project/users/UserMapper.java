@@ -2,6 +2,7 @@ package com.psi.project.users;
 
 import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
+import com.psi.project.users.valueobjects.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -46,5 +47,15 @@ public class UserMapper {
         return userEntityList.stream()
                 .map(this::fromUserEntityToUserRequestDTO)
                 .collect(Collectors.toList());
+    }
+
+    public UserEntity fromUserRequestDTOToUserEntity(UserRequestDTO userRequestDTO) {
+        return UserEntity.builder()
+                .email(new EmailValidator(userRequestDTO.email()))
+                .username(new NameValidator(userRequestDTO.username()))
+                .password(new PasswordValidator(userRequestDTO.password()))
+                .pesel(new PeselValidator(userRequestDTO.pesel()))
+                .type(TypeValidator.valueOf(userRequestDTO.type()))
+                .build();
     }
 }

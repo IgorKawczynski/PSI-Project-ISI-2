@@ -35,8 +35,8 @@ public class EmailValidator {
             throw new IllegalEmailException("Email cannot be empty !!");
         if(email.length() < 6)
             throw new IllegalEmailException("Email must contain at least 5 characters !!");
-        if(!email.contains(EMAIL_PATTERN))
-            throw new IllegalEmailException("Email must contain '@' '.' 'a-z' characters!!");
+//        if(email.contains(EMAIL_PATTERN))
+//            throw new IllegalEmailException("Email must contain '@' '.' 'a-z' characters!!");
         this.email = email;
     }
 }

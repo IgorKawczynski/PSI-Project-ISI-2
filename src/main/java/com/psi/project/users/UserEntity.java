@@ -36,8 +36,7 @@ public class UserEntity extends BasicEntity {
     PeselValidator pesel;
     @Enumerated(EnumType.STRING)
     TypeValidator type;
-
-    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "userId", fetch = FetchType.LAZY)
     @JsonBackReference
     AddressEntity addressId;
 
@@ -51,12 +50,14 @@ public class UserEntity extends BasicEntity {
             NameValidator username,
             PasswordValidator password,
             PeselValidator pesel,
-            TypeValidator type
+            TypeValidator type,
+            AddressEntity addressId
     ) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.pesel = pesel;
         this.type = type;
+        this.addressId = addressId;
     }
 }

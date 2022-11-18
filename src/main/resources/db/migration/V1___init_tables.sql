@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS public.ADDRESS
+CREATE TABLE IF NOT EXISTS ah.ADDRESS
 (
     `id`       INTEGER     NOT NULL  PRIMARY KEY AUTO_INCREMENT,
     `zip_code` VARCHAR(6)  NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.ADDRESS
     ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS public.USERS
+CREATE TABLE IF NOT EXISTS ah.USERS
 (
     `id`         INTEGER                  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `email`      VARCHAR(50)              NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS public.USERS
     ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS public.TRADE
+CREATE TABLE IF NOT EXISTS ah.TRADE
 (
     `id`      INTEGER    NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `value`   DOUBLE     NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS public.TRADE
     ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS public.ITEMS
+CREATE TABLE IF NOT EXISTS ah.ITEMS
 (
     `id`          INTEGER                                           NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `item_name`   VARCHAR(45)                                       NOT NULL,

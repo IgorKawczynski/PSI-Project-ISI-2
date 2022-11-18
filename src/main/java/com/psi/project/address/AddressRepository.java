@@ -10,4 +10,6 @@ public interface AddressRepository extends JpaRepository<AddressEntity, Long> {
 
     Optional<AddressEntity> findAddressEntityByStreet(String street);
 
+    AddressEntity findAddressEntityById(Long id);
+
 }

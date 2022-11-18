@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `ah`.USERS
     `username`   VARCHAR(30)              NULL,
     `pesel`      VARCHAR(11)              NULL,
     `type`       ENUM ('ADMIN', 'CLIENT') NULL,
-    `address_id` INT                      NOT NULL,
+    `address_id` INT                      NULL,
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
     INDEX `fk_Users_Address1_idx` (`address_id` ASC) VISIBLE,
     CONSTRAINT `fk_Users_address1`

@@ -7,9 +7,9 @@ import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,13 +24,13 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity extends CoreEntity {
+public class UserEntity extends CoreEntity implements Serializable  {
 
     @Embedded
     @Column(unique = true)
     EmailValidator email;
     @Embedded
-    NameValidator username;
+    UsernameValidator username;
     @Embedded
     PasswordValidator password;
     @Embedded
@@ -48,7 +48,7 @@ public class UserEntity extends CoreEntity {
     @Builder
     public UserEntity(
             EmailValidator email,
-            NameValidator username,
+            UsernameValidator username,
             PasswordValidator password,
             PeselValidator pesel,
             TypeValidator type,

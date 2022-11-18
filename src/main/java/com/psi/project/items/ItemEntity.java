@@ -11,6 +11,7 @@ import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  *  Encja przedmiotów sprzedaży
@@ -22,7 +23,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class ItemEntity extends CoreEntity {
+public class ItemEntity extends CoreEntity implements Serializable {
 
     @Embedded
     ItemNameValidator itemName;

@@ -5,6 +5,7 @@ import com.psi.project.users.UserEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Table(name = "address")
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Builder
-public class AddressEntity extends CoreEntity {
+public class AddressEntity extends CoreEntity implements Serializable {
 
     String zipCode;
     String city;

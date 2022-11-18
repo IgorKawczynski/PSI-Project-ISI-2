@@ -1,0 +1,1 @@
+ALTER TABLE ah.users ALTER address_id SET DEFAULT null;

@@ -1,13 +1,12 @@
-# TODO --> dokonczyc adres, próbowa? POST z userem -> relacja OneToOne, OneToMany, ManyToOne
-# TODO --> Error Lista do restów -- implementacja b??dów i stacktrace'ów
-# TODO --> addressId z USERA TRZEBA DODAC addressId do DTO itd i bedzie dzialac (po Id zeby szukalo encji w transferze)
+# TODO --> Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
 
-# TODO --> PRAWDOPODOBNIE TRZEBA B?DZIE TO ZMIENI? (PROBLEM Z DOMY?LNYM SCHEMATEM)
-# todo CAMEL CASE??
+# Na problem z domyslnym schematem
 # spring.jpa.properties.hibernate.hbm2ddl.jdbc_metadata_extraction_strategy=individually
 
-# SWAGGER URL
+# SWAGGER URL STARY
 # http://localhost:8080/swagger-ui/?fbclid=IwAR3-LZ06oJMOrMFAaj3j-WcPiDqUWxB8t0N9JevSKmcEJ6kHEzCWJJPXFDw#/user-controller/getUserByEmailUsingGET
+# SWAGGER URL NOWY
+# http://localhost:8080/swagger-ui/index.html
 
 # FLYWAY shiet
 # spring.flyway.baseline-on-migrate=true
@@ -15,4 +14,5 @@
 # spring.flyway.user=root
 # spring.flyway.password=qwerty0987654321
 
+# W razie problemu z sesją springa
 # spring.session.jdbc.initialize-schema=always

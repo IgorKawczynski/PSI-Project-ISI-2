@@ -17,16 +17,16 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class NameValidator implements CoreValidator {
+public class UsernameValidator implements CoreValidator {
     @Column
     String username;
-    public NameValidator(String username) {
+    public UsernameValidator(String username) {
         if( Objects.isNull(username) )
-            throw new IllegalNameException("NAME CANNOT BE NULL !!");
-        if( !containsPolishCharacters(username) )
-            throw new IllegalNameException("NAME MAY CONTAIN ONLY POLISH CHARACTERS !!");
+            throw new IllegalNameException("USERNAME CANNOT BE NULL !!");
+        if( !containsValidCharacters(username) )
+            throw new IllegalNameException("USERNAME MAY CONTAIN ONLY ENGLISH ALPHABET, NUMBERS, SPECIAL CHARACTERS !!");
         if( !isValidLength(username, 1, 30) )
-            throw new IllegalNameException("NAME MUST BE BETWEEN 1 AND 30 CHARACTERS !!");
+            throw new IllegalNameException("USERNAME MUST BE BETWEEN 1 AND 30 CHARACTERS !!");
         this.username = username;
     }
 

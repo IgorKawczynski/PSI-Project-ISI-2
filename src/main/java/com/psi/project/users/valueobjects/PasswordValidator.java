@@ -33,7 +33,7 @@ public class PasswordValidator implements CoreValidator {
             throw new IllegalPasswordException("Password cannot be empty !!");
         if( password.length() < 8 )
             throw new IllegalPasswordException("Password must contain at least 7 characters !!");
-        if( !containsValidCharacters(password, ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS) )
+        if( !containsValidCharacters(password) )
             throw new IllegalPasswordException("Password must contain LETTERS, NUMBERS or SPECIAL characters only !!");
         this.password = password;
     }

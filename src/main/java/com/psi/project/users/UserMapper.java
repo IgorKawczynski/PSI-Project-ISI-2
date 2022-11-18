@@ -1,8 +1,10 @@
 package com.psi.project.users;
 
+import com.psi.project.address.AddressRepository;
 import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
 import com.psi.project.users.valueobjects.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +18,13 @@ import java.util.stream.Collectors;
  */
 @Component
 public class UserMapper {
+
+    private final AddressRepository addressRepository;
+
+    @Autowired
+    public UserMapper(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
 
     public UserResponseDTO fromUserEntityToUserResponseDTO(UserEntity userEntity){
         return UserResponseDTO.builder()
@@ -40,6 +49,7 @@ public class UserMapper {
                 .username(userEntity.getUsername().toString())
                 .pesel(userEntity.getPesel().toString())
                 .type(userEntity.getType().toString())
+                .addressId(userEntity.getAddressEntity().getId())
                 .build();
     }
 
@@ -52,10 +62,11 @@ public class UserMapper {
     public UserEntity fromUserRequestDTOToUserEntity(UserRequestDTO userRequestDTO) {
         return UserEntity.builder()
                 .email(new EmailValidator(userRequestDTO.email()))
-                .username(new NameValidator(userRequestDTO.username()))
+                .username(new UsernameValidator(userRequestDTO.username()))
                 .password(new PasswordValidator(userRequestDTO.password()))
                 .pesel(new PeselValidator(userRequestDTO.pesel()))
                 .type(TypeValidator.valueOf(userRequestDTO.type()))
+                .addressEntity(addressRepository.findAddressEntityById(userRequestDTO.addressId()))
                 .build();
     }
 }

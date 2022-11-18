@@ -10,8 +10,8 @@ public interface CoreValidator {
     String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
     String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
 
-    default boolean containsValidCharacters(String stringToCheck, String pattern) {
-        return stringToCheck.matches(pattern);
+    default boolean containsValidCharacters(String stringToCheck) {
+        return stringToCheck.matches(ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS);
     }
 
     default boolean containsPolishCharacters(String stringToCheck) {

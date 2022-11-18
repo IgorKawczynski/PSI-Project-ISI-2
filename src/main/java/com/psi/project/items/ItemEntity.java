@@ -1,7 +1,7 @@
 package com.psi.project.items;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.psi.project.basic.BasicEntity;
+import com.psi.project.core.CoreEntity;
 import com.psi.project.items.valueobjects.*;
 import com.psi.project.trade.TradeEntity;
 import com.psi.project.users.UserEntity;
@@ -11,7 +11,6 @@ import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  *  Encja przedmiotów sprzedaży
@@ -23,7 +22,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class ItemEntity extends BasicEntity {
+public class ItemEntity extends CoreEntity {
 
     @Embedded
     ItemNameValidator itemName;
@@ -33,18 +32,16 @@ public class ItemEntity extends BasicEntity {
     PriceValidator price;
     @Enumerated(EnumType.STRING)
     CategoryValidator category;
-
     @Enumerated(EnumType.STRING)
     StatusValidator status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
     @LazyToOne(LazyToOneOption.NO_PROXY)
+    @JoinColumn(name = "user_id", nullable = true)
+    @JsonBackReference
     UserEntity userId;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trade_id", nullable = false)
+    @JoinColumn(name = "trade_id", nullable = true)
     @JsonBackReference
     @LazyToOne(LazyToOneOption.NO_PROXY)
     TradeEntity tradeId;

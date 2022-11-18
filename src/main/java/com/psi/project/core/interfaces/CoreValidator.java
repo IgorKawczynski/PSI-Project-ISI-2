@@ -1,11 +1,11 @@
-package com.psi.project.basic.interfaces;
+package com.psi.project.core.interfaces;
 
 /**
 *
 *  Bazowy Interfejs walidujący - dostarcza podstawowe metody walidujące
 *   @author Igor Kawczyński
 **/
-public interface BasicValidator {
+public interface CoreValidator {
 
     String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
     String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";

@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `ah`.ITEMS
     `price`       DOUBLE                                            NOT NULL,
     `category`    ENUM ('JEWELRY', 'SPORTS', 'FURNITURE', 'RTVAGD') NOT NULL,
     `status`      ENUM ('AVAILABLE', 'UNAVAILABLE')                 NOT NULL,
-    `user_id`     INT                                               NOT NULL,
-    `trade_id`    INT                                               NOT NULL,
+    `user_id`     INT,
+    `trade_id`    INT,
     CONSTRAINT `fk_Items_Users`
     FOREIGN KEY (`user_id`)
     REFERENCES `USERS` (`id`)

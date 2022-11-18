@@ -1,6 +1,6 @@
 package com.psi.project.address;
 
-import com.psi.project.basic.BasicEntity;
+import com.psi.project.core.CoreEntity;
 import com.psi.project.users.UserEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,7 +15,7 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Builder
-public class AddressEntity extends BasicEntity {
+public class AddressEntity extends CoreEntity {
 
     String zipCode;
     String city;

@@ -1,6 +1,6 @@
 package com.psi.project.users.valueobjects;
 
-import com.psi.project.basic.interfaces.BasicValidator;
+import com.psi.project.core.interfaces.CoreValidator;
 import com.psi.project.users.exceptions.IllegalNameException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class NameValidator implements BasicValidator {
+public class NameValidator implements CoreValidator {
     @Column
     String username;
     public NameValidator(String username) {

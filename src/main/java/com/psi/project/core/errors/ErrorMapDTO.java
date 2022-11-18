@@ -1,4 +1,4 @@
-package com.psi.project.basic.errors;
+package com.psi.project.core.errors;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,6 @@
 package com.psi.project.users.valueobjects;
 
-import com.psi.project.basic.interfaces.BasicValidator;
-import com.psi.project.users.exceptions.IllegalEmailException;
+import com.psi.project.core.interfaces.CoreValidator;
 import com.psi.project.users.exceptions.IllegalPasswordException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -22,7 +21,7 @@ import java.util.Objects;
 @EqualsAndHashCode
 @Valid
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PasswordValidator implements BasicValidator {
+public class PasswordValidator implements CoreValidator {
 
     @Column
     String password;

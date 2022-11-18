@@ -1,6 +1,6 @@
 package com.psi.project.trade;
 
-import com.psi.project.basic.BasicEntity;
+import com.psi.project.core.CoreEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TradeEntity extends BasicEntity {
+public class TradeEntity extends CoreEntity {
 
 
 }

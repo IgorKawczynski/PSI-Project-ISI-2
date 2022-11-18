@@ -2,13 +2,14 @@ package com.psi.project.users;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.address.AddressEntity;
-import com.psi.project.basic.BasicEntity;
+import com.psi.project.core.CoreEntity;
 import com.psi.project.items.ItemEntity;
 import com.psi.project.users.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity extends BasicEntity {
+public class UserEntity extends CoreEntity {
 
     @Embedded
     @Column(unique = true)
@@ -38,11 +39,11 @@ public class UserEntity extends BasicEntity {
     TypeValidator type;
     @OneToOne(mappedBy = "userId", fetch = FetchType.LAZY)
     @JsonBackReference
-    AddressEntity addressId;
+    AddressEntity addressEntity;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
-    @JsonBackReference
-    List<ItemEntity> itemsEntities;
+    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+    List<ItemEntity> itemEntities;
+
 
     @Builder
     public UserEntity(
@@ -51,13 +52,13 @@ public class UserEntity extends BasicEntity {
             PasswordValidator password,
             PeselValidator pesel,
             TypeValidator type,
-            AddressEntity addressId
+            AddressEntity addressEntity
     ) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.pesel = pesel;
         this.type = type;
-        this.addressId = addressId;
+        this.addressEntity = addressEntity;
     }
 }

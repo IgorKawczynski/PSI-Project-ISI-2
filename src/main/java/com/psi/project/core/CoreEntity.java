@@ -1,4 +1,4 @@
-package com.psi.project.basic;
+package com.psi.project.core;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @MappedSuperclass
-public class BasicEntity {
+public class CoreEntity {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id

@@ -13,7 +13,6 @@ import java.util.Objects;
 
 
 @Embeddable
-@ToString
 @NotNull
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -29,14 +28,18 @@ public class EmailValidator {
     String email;
 
     public EmailValidator(String email) {
-        if(Objects.isNull(email))
-            throw new IllegalEmailException("Email is necessary !!");
-        if(email.isEmpty())
-            throw new IllegalEmailException("Email cannot be empty !!");
-        if(email.length() < 6)
-            throw new IllegalEmailException("Email must contain at least 5 characters !!");
-//        if(email.contains(EMAIL_PATTERN))
-//            throw new IllegalEmailException("Email must contain '@' '.' 'a-z' characters!!");
+        if( Objects.isNull(email) )
+            throw new IllegalEmailException("E-MAIL is necessary !!");
+        if( email.isEmpty() )
+            throw new IllegalEmailException("E-MAIL cannot be empty !!");
+        if( email.length() < 6 )
+            throw new IllegalEmailException("E-MAIL must contain at least 5 characters !!");
+        if( email.contains(EMAIL_PATTERN) )
+            throw new IllegalEmailException("E-MAIL must contain '@' '.' 'a-z' characters!!");
         this.email = email;
+    }
+    @Override
+    public String toString() {
+        return email;
     }
 }

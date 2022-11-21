@@ -34,7 +34,9 @@ public class ItemService {
     }
 
     public ItemDTO getItemById(Long id){
-        var item = itemRepository.findById(id)
+        var item =
+                itemRepository
+                .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Item with id: " + id + " does not exist!"));
         return itemMapper.fromItemEntityToItemDTO(item);
     }
@@ -44,7 +46,9 @@ public class ItemService {
     }
 
     public String updateItemById(Long id, String description, Double price) {
-        var item = itemRepository.findById(id)
+        var item =
+                itemRepository
+                .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Item with id: " + id + " does not exist!"));
         item.setDescription(new DescriptionValidator(description));
         item.setPrice(new PriceValidator(price));
@@ -53,7 +57,9 @@ public class ItemService {
     }
 
     public String deleteItem(Long id) {
-        var item = itemRepository.findById(id)
+        var item =
+                itemRepository
+                .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Item with id: " + id + " does not exist!"));
         itemRepository.delete(item);
         return "Item with id: " + id + " deleted successfully!";

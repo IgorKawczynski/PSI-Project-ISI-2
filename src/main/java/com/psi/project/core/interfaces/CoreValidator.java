@@ -7,6 +7,7 @@ package com.psi.project.core.interfaces;
 **/
 public interface CoreValidator {
 
+    String DIGITS = "[0-9]+";
     String POLISH_ALPHABET = "[a-zA-Z-\\p{IsAlphabetic}]+";
     String ENGLISH_LETTERS_NUMBERS_SPECIAL_CHARACTERS = "[\\x21-\\x7E]+";
 

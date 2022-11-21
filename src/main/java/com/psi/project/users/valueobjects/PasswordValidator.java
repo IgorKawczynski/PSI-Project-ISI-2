@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Embeddable
-@ToString
 @NotNull
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -28,13 +27,18 @@ public class PasswordValidator implements CoreValidator {
 
     public PasswordValidator(String password) {
         if( Objects.isNull(password) )
-            throw new IllegalPasswordException("Password is necessary !!");
+            throw new IllegalPasswordException("PASSWORD is necessary !!");
         if( password.isEmpty() )
-            throw new IllegalPasswordException("Password cannot be empty !!");
+            throw new IllegalPasswordException("PASSWORD can not be empty !!");
         if( password.length() < 8 )
-            throw new IllegalPasswordException("Password must contain at least 7 characters !!");
+            throw new IllegalPasswordException("PASSWORD must contain at least 7 characters !!");
         if( !containsValidCharacters(password) )
-            throw new IllegalPasswordException("Password must contain LETTERS, NUMBERS or SPECIAL characters only !!");
+            throw new IllegalPasswordException("PASSWORD must contain LETTERS, NUMBERS or SPECIAL characters only !!");
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return password;
     }
 }

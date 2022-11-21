@@ -1,4 +1,8 @@
+# TODO --> Do rozbudowania encja 'TRADE' + dodanie dodatkowej encji i rozbudowa jej (Baza jest bardzo uboga)
 # TODO --> Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
+# TODO --> Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy
+# TODO --> Dodanie uprawnień zależnie od typu usera ('CLIENT' i 'ADMIN')
+# TODO --> TESTY; /src/test/...
 
 # Na problem z domyslnym schematem
 # spring.jpa.properties.hibernate.hbm2ddl.jdbc_metadata_extraction_strategy=individually

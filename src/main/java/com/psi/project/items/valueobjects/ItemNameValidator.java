@@ -1,6 +1,7 @@
 package com.psi.project.items.valueobjects;
 
 import com.psi.project.core.interfaces.CoreValidator;
+import com.psi.project.items.exceptions.IllegalItemArgumentException;
 import com.psi.project.users.exceptions.IllegalNameException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -24,12 +25,17 @@ public class ItemNameValidator implements CoreValidator {
 
     public ItemNameValidator(String itemName) {
         if( Objects.isNull(itemName) )
-            throw new IllegalNameException("NAME CANNOT BE NULL !!");
+            throw new IllegalItemArgumentException("NAME CANNOT BE NULL !!");
         if( !containsPolishCharacters(itemName) )
-            throw new IllegalNameException("NAME MAY CONTAIN ONLY POLISH CHARACTERS !!");
+            throw new IllegalItemArgumentException("NAME MAY CONTAIN ONLY POLISH CHARACTERS !!");
         if( !isValidLength(itemName, 1, 30) )
-            throw new IllegalNameException("NAME MUST BE BETWEEN 1 AND 30 CHARACTERS !!");
+            throw new IllegalItemArgumentException("NAME MUST BE BETWEEN 1 AND 30 CHARACTERS !!");
         this.itemName = itemName;
+    }
+
+    @Override
+    public String toString() {
+        return itemName;
     }
 
 

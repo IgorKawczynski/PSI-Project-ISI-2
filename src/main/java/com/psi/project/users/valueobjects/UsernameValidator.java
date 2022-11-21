@@ -13,7 +13,6 @@ import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @Embeddable
-@ToString
 @NoArgsConstructor
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -30,5 +29,8 @@ public class UsernameValidator implements CoreValidator {
         this.username = username;
     }
 
-
+    @Override
+    public String toString() {
+        return username;
+    }
 }

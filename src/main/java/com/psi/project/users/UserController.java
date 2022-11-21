@@ -40,10 +40,10 @@ public class UserController {
     public void addUser(@RequestBody UserRequestDTO userRequestDTO) {
         userService.addUser(userRequestDTO);
     }
-    @PatchMapping("")
+    @PatchMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String changeUserEmail(@RequestParam("id") Long id, @RequestBody String email) {
-        return userService.updateUserEmail(id, new EmailValidator(email));
+    public String changeUserEmail(@PathVariable("id") Long id, @RequestBody String email) {
+        return userService.updateUserEmailById(id, new EmailValidator(email));
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)

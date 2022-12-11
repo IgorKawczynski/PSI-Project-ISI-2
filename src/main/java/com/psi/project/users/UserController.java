@@ -27,8 +27,13 @@ public class UserController {
     }
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<UserResponseDTO> getUsers() {
-        return userService.getUsers();
+    public List<UserResponseDTO> getAllUsers() {
+        return userService.getAllUsers();
+    }
+    @GetMapping("/paginated")
+    @ResponseStatus(HttpStatus.FOUND)
+    public List<UserResponseDTO> getUsersPaginated() {
+        return userService.getUsersPaginated();
     }
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)

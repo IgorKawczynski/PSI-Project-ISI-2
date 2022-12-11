@@ -4,11 +4,13 @@ import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
 import com.psi.project.users.valueobjects.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -19,6 +21,7 @@ import java.util.NoSuchElementException;
 @Service
 public class UserService {
 
+    private final static Integer PAGES = 5;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     @Autowired
@@ -27,11 +30,18 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public List<UserResponseDTO> getUsers() {
+    public List<UserResponseDTO> getAllUsers() {
         var users =
                 userRepository
                 .findAll(Sort.by(Sort.Direction.ASC, "username"));
         return userMapper.fromUserEntityListToUserResponseList(users);
+    }
+
+    public List<UserResponseDTO> getUsersPaginated() {
+        var users =
+                userRepository
+                        .findAll(Pageable.ofSize(5));
+        return userMapper.fromUserEntityListToUserResponseList(users.get().collect(Collectors.toList()));
     }
 
     public UserResponseDTO getUserByEmail(String email){

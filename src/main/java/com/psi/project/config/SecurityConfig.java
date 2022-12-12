@@ -1,4 +1,1 @@
-//package com.psi.project.config;
-//
-//public class SecurityConfig {
-//}
+package com.psi.project.config;

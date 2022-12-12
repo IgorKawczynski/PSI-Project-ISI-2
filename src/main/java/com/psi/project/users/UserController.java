@@ -25,15 +25,11 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<UserResponseDTO> getAllUsers() {
-        return userService.getAllUsers();
-    }
-    @GetMapping("/paginated")
-    @ResponseStatus(HttpStatus.FOUND)
-    public List<UserResponseDTO> getUsersPaginated() {
-        return userService.getUsersPaginated();
+    public List<UserResponseDTO> getUsers() {
+        return userService.getUsers();
     }
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)

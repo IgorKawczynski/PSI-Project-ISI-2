@@ -4,6 +4,7 @@ import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
 import com.psi.project.users.valueobjects.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
-    private final static Integer PAGES = 5;
+    private final static Integer PAGESIZE = 5;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     @Autowired
@@ -30,17 +31,10 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public List<UserResponseDTO> getAllUsers() {
+    public List<UserResponseDTO> getUsers() {
         var users =
                 userRepository
-                .findAll(Sort.by(Sort.Direction.ASC, "username"));
-        return userMapper.fromUserEntityListToUserResponseList(users);
-    }
-
-    public List<UserResponseDTO> getUsersPaginated() {
-        var users =
-                userRepository
-                        .findAll(Pageable.ofSize(5));
+                        .findAll(PageRequest.of(2, PAGESIZE));
         return userMapper.fromUserEntityListToUserResponseList(users.get().collect(Collectors.toList()));
     }
 

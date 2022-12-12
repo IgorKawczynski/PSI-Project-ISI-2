@@ -3,12 +3,14 @@ package com.psi.project.users;
 import com.psi.project.users.dtos.UserRequestDTO;
 import com.psi.project.users.dtos.UserResponseDTO;
 import com.psi.project.users.valueobjects.EmailValidator;
+import com.psi.project.users.valueobjects.TypeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -37,10 +39,13 @@ public class UserService {
                 page, PAGESIZE, Sort.by(Sort.Direction.ASC, "username")
                                        .and(Sort.by(Sort.Direction.ASC, "email"))
         );
+
         var users =
                 userRepository
                         .findAll(sortedByUsername);
-        return userMapper.fromUserEntityListToUserResponseList(users.get().collect(Collectors.toList()));
+
+        return userMapper
+                .fromUserEntityListToUserResponseList(users.get().collect(Collectors.toList()));
     }
 
     public UserResponseDTO getUserByEmail(String email){
@@ -49,6 +54,14 @@ public class UserService {
                 .findUserByEmail(new EmailValidator(email))
                 .orElseThrow(() -> new NoSuchElementException("USER with email: " + email + " does not exist!!"));
         return userMapper.fromUserEntityToUserResponseDTO((UserEntity)user);
+    }
+
+    public List<UserResponseDTO> findUsersByType(String type){
+        var users =
+                userRepository
+                        .findByTypeEquals(TypeValidator.valueOf(type));
+
+        return userMapper.fromUserEntityListToUserResponseList(users);
     }
 
     public void addUser(UserRequestDTO userRequestDTO) {

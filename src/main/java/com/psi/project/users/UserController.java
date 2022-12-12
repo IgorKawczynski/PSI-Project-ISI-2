@@ -28,13 +28,18 @@ public class UserController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<UserResponseDTO> getUsers(@RequestParam("page") Integer page) {
+    public List<UserResponseDTO> getUsers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
         return userService.getUsers(page);
     }
-    @GetMapping("")
-    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/get")
+    @ResponseStatus(HttpStatus.FOUND)
     public UserResponseDTO getUserByEmail(@RequestParam("email") String email) {
         return userService.getUserByEmail(email);
+    }
+    @GetMapping("/where")
+    @ResponseStatus(HttpStatus.FOUND)
+    public List<UserResponseDTO> findUsersByType(@RequestParam("type") String type) {
+        return userService.findUsersByType(type);
     }
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)

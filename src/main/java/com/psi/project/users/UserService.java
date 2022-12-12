@@ -31,10 +31,15 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public List<UserResponseDTO> getUsers() {
+    public List<UserResponseDTO> getUsers(Integer page) {
+
+        Pageable sortedByUsername = PageRequest.of(
+                page, PAGESIZE, Sort.by(Sort.Direction.ASC, "username")
+                                       .and(Sort.by(Sort.Direction.ASC, "email"))
+        );
         var users =
                 userRepository
-                        .findAll(PageRequest.of(2, PAGESIZE));
+                        .findAll(sortedByUsername);
         return userMapper.fromUserEntityListToUserResponseList(users.get().collect(Collectors.toList()));
     }
 

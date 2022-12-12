@@ -28,8 +28,8 @@ public class UserController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<UserResponseDTO> getUsers() {
-        return userService.getUsers();
+    public List<UserResponseDTO> getUsers(@RequestParam("page") Integer page) {
+        return userService.getUsers(page);
     }
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)

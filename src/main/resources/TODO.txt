@@ -1,39 +1,49 @@
-# TODO --> Do rozbudowania encja 'TRADE' + dodanie dodatkowej encji i rozbudowa jej (Baza jest bardzo uboga)
-# TODO --> Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
-# TODO --> Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy
-# TODO --> Dodanie uprawnień zależnie od typu usera ('CLIENT' i 'ADMIN')
-# TODO --> TESTY; /src/test/...
-# TODO --> do wrzucenia kolejne rzeczy do security configu + mozliwosc logowania (moze thymeleaf)
+********************************* THINGS TO DO *********************************
 
-# Na problem z domyslnym schematem
+1. Modyfikacja modelu bazy danych
+2. Rozbudowa nowego modelu bazy danych
+3. Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
+4. Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy
+5. Dodanie uprawnień zależnie od typu usera ('CLIENT' i 'ADMIN') - Permissions (może logowanie na starcie?)
+   a) Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów,
+   b) Dodaj endpointy, które są dostępne tylko dla administratora.
+6. Upgrade filtrowania i paginacji dla większej ilości metod (dla wszystkich getów)
+   a) W związach jeden do wielu po stronie jeden wstaw linki do rekordów po stronie wiele - użyj HyperlinkedRelatedField z klasy HyperlinkedModelSerializer
+   b) Ustaw globalną paginację z liczbą pozycji na stronę 5
+   c) Ustaw filtry i sortowanie na poszczególne widoki
+   d) Dodaj własne filtry na datę i liczby jako przedział od - do
+7. TESTY; /src/test/...
+
+********************************* NOTES *********************************
+
+# In case problems with default schema
 # spring.jpa.properties.hibernate.hbm2ddl.jdbc_metadata_extraction_strategy=individually
 
-# SWAGGER URL STARY
+# SWAGGER OLD URL
 # http://localhost:8080/swagger-ui/?fbclid=IwAR3-LZ06oJMOrMFAaj3j-WcPiDqUWxB8t0N9JevSKmcEJ6kHEzCWJJPXFDw#/user-controller/getUserByEmailUsingGET
-# SWAGGER URL NOWY
+# SWAGGER NEW URL
 # http://localhost:8080/swagger-ui/index.html
 
-# FLYWAY
+# FLYWAY THINGS
 # spring.flyway.baseline-on-migrate=true
 # spring.flyway.url=jdbc:mysql://localhost:3306/ah
 # spring.flyway.user=root
 # spring.flyway.password=qwerty0987654321
 
-# W razie problemu z sesją springa
+# In case problems with Spring's session
 # spring.session.jdbc.initialize-schema=always
 
+********************************* README *********************************
 
-Aplikacja AuctionHouse jest prostym serwisem aukcyjnym pozwalającym użytkownikom na:
+Aplikacja webowa 'AuctionHouse' jest serwisem aukcyjnym pozwalającym użytkownikom na:
 -zarejestrowanie się
 -zalogowanie się
 -edycję danych konta
--usunięcie konta
-^CRUD
+-usunięcie konta (CRUD)
 -dodanie oferty sprzedaży przedmiotu
 -przeglądania ofert sprzedaży (paginacja, wyszukiwanie, sortowanie)
 -edytowanie swojej oferty sprzedaży
 -usunięcie swojej oferty sprzedaży
-^ - Ustawienie praw dostępu dla poszczególnych widoków
 -kupno przedmiotu od innego sprzedającego
 -wystawienie opinii innemu użytkownikowi, jeśli kupiło się od niego przedmiot
 
@@ -42,4 +52,4 @@ item.status -  dostępny/niedostępny   - po zakupie update w bazie na niedostę
 trade.value - item.price + np. cena wysyłki
 sprzedającego w tradzie można określić po item_id
 w opiniach buyer to ten, ktory zostawia opinie po kupnie, a user_id to ten dla którego opinia zostaje wydana
-(na podstwie trade_id->item_id->seller_id)
+(na podstawie trade_id -> item_id -> seller_id)

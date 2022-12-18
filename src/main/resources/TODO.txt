@@ -12,7 +12,7 @@
    b) Ustaw globalną paginację z liczbą pozycji na stronę 5
    c) Ustaw filtry i sortowanie na poszczególne widoki
    d) Dodaj własne filtry na datę i liczby jako przedział od - do
-7. TESTY; /src/test/...
+7. TESTY; /src/test/... --> https://gitlab.com/pdrozda/psi-cwiczenia/-/tree/master/08%20Autentykacja,%20Testowanie
 
 ********************************* NOTES *********************************
 

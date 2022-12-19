@@ -18,7 +18,7 @@ import java.util.List;
  * @author Igor Kawczyński
  *
  */
-@Table(name = "users")
+@Table(name = "user")
 @Getter
 @Setter
 @Entity

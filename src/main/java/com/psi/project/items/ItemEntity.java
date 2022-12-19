@@ -17,7 +17,7 @@ import java.io.Serializable;
  *  Encja przedmiotów sprzedaży
  *  @author Igor Kawczynski
  */
-@Table(name = "items")
+@Table(name = "item")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -38,14 +38,14 @@ public class ItemEntity extends CoreEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @LazyToOne(LazyToOneOption.NO_PROXY)
-    @JoinColumn(name = "user_id", nullable = true)
+    @JoinColumn(name = "seller_id", nullable = true)
     @JsonBackReference
     UserEntity userId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trade_id", nullable = true)
-    @JsonBackReference
-    @LazyToOne(LazyToOneOption.NO_PROXY)
-    TradeEntity tradeId;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "trade_id", nullable = true)
+//    @JsonBackReference
+//    @LazyToOne(LazyToOneOption.NO_PROXY)
+//    TradeEntity tradeId;
 
     @Builder
     public ItemEntity(
@@ -54,8 +54,8 @@ public class ItemEntity extends CoreEntity implements Serializable {
             PriceValidator price,
             CategoryValidator category,
             StatusValidator status,
-            UserEntity userId,
-            TradeEntity tradeId
+            UserEntity userId
+//            ,TradeEntity tradeId
 
     ) {
         this.itemName = itemName;
@@ -64,6 +64,6 @@ public class ItemEntity extends CoreEntity implements Serializable {
         this.category = category;
         this.status = status;
         this.userId = userId;
-        this.tradeId = tradeId;
+//        this.tradeId = tradeId;
     }
 }

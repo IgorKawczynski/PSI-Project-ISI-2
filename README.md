@@ -1,6 +1,6 @@
-<br> Repository created to the needs of "Programming services" subject :computer: :computer:
+<br> Repository created to the needs of "Programming services" subject :computer: 
 <br> It's implementation of web service to help managing the Auction House store.
-<br> Clients there can buy or either sell items from categories like sports, rtv+agd, furniture, jewelry...
+<br> Clients there can buy or either sell items from categories such as sports, rtv+agd, furniture and jewelry and leave ratings after each transaction.
 
 TEAM :
 1. Igor Kawczyński :computer:
@@ -8,6 +8,4 @@ TEAM :
 
 Database Model :
 
-![AHdatabaseModel](https://user-images.githubusercontent.com/73948605/199984523-366dbcf6-e7f0-48db-8533-f14e4c5a32a8.png)
-
-
+![AHdatabaseModel](https://github.com/IgorKawczynski/PSI-Project-ISI-2/blob/master/AHdatabaseModel.png?raw=true)

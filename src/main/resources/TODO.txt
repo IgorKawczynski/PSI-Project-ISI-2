@@ -7,6 +7,7 @@
 5. Dodanie uprawnień zależnie od typu usera ('CLIENT' i 'ADMIN') - Permissions (może logowanie na starcie?)
    a) Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów,
    b) Dodaj endpointy, które są dostępne tylko dla administratora.
+   c) Ustaw niektóre resty (typu dodaj usera) tylko dla Admina -> gety dla usera daj dla Klienta
 6. Upgrade filtrowania i paginacji dla większej ilości metod (dla wszystkich getów)
    a) W związach jeden do wielu po stronie jeden wstaw linki do rekordów po stronie wiele - użyj HyperlinkedRelatedField z klasy HyperlinkedModelSerializer
    b) Ustaw globalną paginację z liczbą pozycji na stronę 5

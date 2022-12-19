@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -16,13 +17,15 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-public class WebCsrfConfig extends WebSecurityConfigurerAdapter {
+public class WebCsrfConfig {
 
     // PO WYKASOWANIU PONIŻSZEJ METODY UAKTYWNI SIĘ PANEL LOGOWANIA
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//           .csrf()
+//           .disable();
+//    }
 
 
     // CONFIG POD AUTENTYFIKACJE
@@ -57,8 +60,9 @@ public class WebCsrfConfig extends WebSecurityConfigurerAdapter {
 
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//
-//        http.csrf().disable();
+//        http
+//           .csrf()
+//           .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 //        return http.build();
 //    }
 

@@ -1,5 +1,8 @@
 package com.psi.project.address;
 
+import com.psi.project.address.valueobjects.CityValidator;
+import com.psi.project.address.valueobjects.StreetValidator;
+import com.psi.project.address.valueobjects.ZipCodeValidator;
 import com.psi.project.core.CoreEntity;
 import com.psi.project.user.UserEntity;
 import lombok.*;
@@ -15,15 +18,30 @@ import java.io.Serializable;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Builder
 public class AddressEntity extends CoreEntity implements Serializable {
 
-    String zipCode;
-    String city;
-    String street;
+    @Embedded
+    ZipCodeValidator zipCode;
+
+    @Embedded
+    CityValidator city;
+
+    @Embedded
+    StreetValidator street;
 
     @OneToOne
     @JoinColumn(name = "id")
     UserEntity userId;
+
+    @Builder
+    public AddressEntity(
+            ZipCodeValidator zipCode,
+            CityValidator city,
+            StreetValidator street
+    ) {
+        this.zipCode = zipCode;
+        this.city = city;
+        this.street = street;
+    }
 
 }

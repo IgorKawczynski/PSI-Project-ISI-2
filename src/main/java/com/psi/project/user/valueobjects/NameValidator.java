@@ -34,10 +34,6 @@ public class NameValidator implements CoreValidator {
         this.name = name;
     }
 
-    public String toLowerCaseThenCapitalize(String string){
-        return string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
-    }
-
     @Override
     public String toString() {
         return name;

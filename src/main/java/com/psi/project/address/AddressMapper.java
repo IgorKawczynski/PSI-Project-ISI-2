@@ -2,9 +2,11 @@ package com.psi.project.address;
 
 import com.psi.project.address.dtos.AddressRequestDTO;
 import com.psi.project.address.dtos.AddressResponseDTO;
+import com.psi.project.address.valueobjects.CityValidator;
+import com.psi.project.address.valueobjects.StreetValidator;
+import com.psi.project.address.valueobjects.ZipCodeValidator;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.GeneratedValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,9 +14,9 @@ import java.util.stream.Collectors;
 public class AddressMapper {
     public AddressRequestDTO fromAddressEntityToAddressRequestDTO(AddressEntity addressEntity){
         return AddressRequestDTO.builder()
-                .zipCode(addressEntity.getZipCode())
-                .city(addressEntity.getCity())
-                .street(addressEntity.getStreet())
+                .zipCode(addressEntity.getZipCode().toString())
+                .city(addressEntity.getCity().toString())
+                .street(addressEntity.getStreet().toString())
                 .build();
 
     }
@@ -25,9 +27,9 @@ public class AddressMapper {
     }
     public AddressResponseDTO fromAddressEntityToAddressResponseDTO(AddressEntity addressEntity){
         return AddressResponseDTO.builder()
-                .zipCode(addressEntity.getZipCode())
-                .city(addressEntity.getCity())
-                .street(addressEntity.getStreet())
+                .zipCode(addressEntity.getZipCode().toString())
+                .city(addressEntity.getCity().toString())
+                .street(addressEntity.getStreet().toString())
                 .build();
 
     }
@@ -38,9 +40,9 @@ public class AddressMapper {
     }
     public AddressEntity fromAddressRequestDTOToAddressEntity(AddressRequestDTO addressRequestDTO) {
         return AddressEntity.builder()
-                .zipCode(addressRequestDTO.zipCode())
-                .city(addressRequestDTO.city())
-                .street(addressRequestDTO.street())
+                .zipCode(new ZipCodeValidator(addressRequestDTO.zipCode()))
+                .city(new CityValidator(addressRequestDTO.city()))
+                .street(new StreetValidator(addressRequestDTO.street()))
                 .build();
     }
 }

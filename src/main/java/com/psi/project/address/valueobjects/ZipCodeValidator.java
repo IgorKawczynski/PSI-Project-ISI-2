@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -20,6 +21,7 @@ public class ZipCodeValidator implements CoreValidator {
 
     private static final String ZIPCODE_PATTERN = "^[0-9]{2}(?:-[0-9]{3})?$";
 
+    @Column
     String zipCode;
 
     public ZipCodeValidator(String zipCode) {

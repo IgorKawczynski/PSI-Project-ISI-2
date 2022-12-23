@@ -14,10 +14,9 @@ import java.io.Serializable;
 @Table(name = "address")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AddressEntity extends CoreEntity implements Serializable {
 
     @Embedded

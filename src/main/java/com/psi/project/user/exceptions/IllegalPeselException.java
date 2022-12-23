@@ -1,4 +1,4 @@
-package com.psi.project.users.exceptions;
+package com.psi.project.user.exceptions;
 
 public class IllegalPeselException extends IllegalArgumentException{
 

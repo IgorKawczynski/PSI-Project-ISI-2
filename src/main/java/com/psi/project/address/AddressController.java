@@ -2,8 +2,6 @@ package com.psi.project.address;
 
 import com.psi.project.address.dtos.AddressRequestDTO;
 import com.psi.project.address.dtos.AddressResponseDTO;
-import com.psi.project.users.dtos.UserRequestDTO;
-import com.psi.project.users.dtos.UserResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

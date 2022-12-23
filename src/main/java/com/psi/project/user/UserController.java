@@ -1,11 +1,10 @@
-package com.psi.project.users;
+package com.psi.project.user;
 
-import com.psi.project.users.dtos.UserRequestDTO;
-import com.psi.project.users.dtos.UserResponseDTO;
-import com.psi.project.users.valueobjects.EmailValidator;
+import com.psi.project.user.dtos.UserRequestDTO;
+import com.psi.project.user.dtos.UserResponseDTO;
+import com.psi.project.user.valueobjects.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

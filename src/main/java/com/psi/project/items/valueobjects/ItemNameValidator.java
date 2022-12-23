@@ -2,7 +2,6 @@ package com.psi.project.items.valueobjects;
 
 import com.psi.project.core.interfaces.CoreValidator;
 import com.psi.project.items.exceptions.IllegalItemArgumentException;
-import com.psi.project.users.exceptions.IllegalNameException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -1,9 +1,9 @@
-package com.psi.project.users;
+package com.psi.project.user;
 
 import com.psi.project.address.AddressRepository;
-import com.psi.project.users.dtos.UserRequestDTO;
-import com.psi.project.users.dtos.UserResponseDTO;
-import com.psi.project.users.valueobjects.*;
+import com.psi.project.user.dtos.UserRequestDTO;
+import com.psi.project.user.dtos.UserResponseDTO;
+import com.psi.project.user.valueobjects.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +29,8 @@ public class UserMapper {
     public UserResponseDTO fromUserEntityToUserResponseDTO(UserEntity userEntity){
         return UserResponseDTO.builder()
                 .email(userEntity.getEmail().toString())
-                .username(userEntity.getUsername().toString())
+                .firstName(userEntity.getFirstName().toString())
+                .lastName(userEntity.getLastName().toString())
                 .pesel(userEntity.getPesel().toString())
                 .type(userEntity.getType().toString())
                 .build();
@@ -46,7 +47,8 @@ public class UserMapper {
         return UserRequestDTO.builder()
                 .email(userEntity.getEmail().toString())
                 .password(userEntity.getPassword().toString())
-                .username(userEntity.getUsername().toString())
+                .firstName(userEntity.getFirstName().toString())
+                .lastName(userEntity.getLastName().toString())
                 .pesel(userEntity.getPesel().toString())
                 .type(userEntity.getType().toString())
                 .addressId(userEntity.getAddressEntity().getId())
@@ -62,7 +64,8 @@ public class UserMapper {
     public UserEntity fromUserRequestDTOToUserEntity(UserRequestDTO userRequestDTO) {
         return UserEntity.builder()
                 .email(new EmailValidator(userRequestDTO.email()))
-                .username(new UsernameValidator(userRequestDTO.username()))
+                .firstName(new NameValidator(userRequestDTO.firstName()))
+                .lastName(new NameValidator(userRequestDTO.lastName()))
                 .password(new PasswordValidator(userRequestDTO.password()))
                 .pesel(new PeselValidator(userRequestDTO.pesel()))
                 .type(TypeValidator.valueOf(userRequestDTO.type()))

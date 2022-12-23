@@ -1,11 +1,10 @@
-package com.psi.project.users.valueobjects;
+package com.psi.project.user.valueobjects;
 
 import com.psi.project.core.interfaces.CoreValidator;
-import com.psi.project.users.exceptions.IllegalPasswordException;
+import com.psi.project.user.exceptions.IllegalPasswordException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
@@ -27,13 +26,13 @@ public class PasswordValidator implements CoreValidator {
 
     public PasswordValidator(String password) {
         if( Objects.isNull(password) )
-            throw new IllegalPasswordException("PASSWORD is necessary !!");
+            throw new IllegalPasswordException("Password is necessary!");
         if( password.isEmpty() )
-            throw new IllegalPasswordException("PASSWORD can not be empty !!");
-        if( password.length() < 8 )
-            throw new IllegalPasswordException("PASSWORD must contain at least 7 characters !!");
+            throw new IllegalPasswordException("Password can not be empty!");
+        if( !isValidLength(password, 7, 255) )
+            throw new IllegalPasswordException("Password must be between 7 and 255 characters length!");
         if( !containsValidCharacters(password) )
-            throw new IllegalPasswordException("PASSWORD must contain LETTERS, NUMBERS or SPECIAL characters only !!");
+            throw new IllegalPasswordException("Password must contain english letters, numbers or special characters only!");
         this.password = password;
     }
 

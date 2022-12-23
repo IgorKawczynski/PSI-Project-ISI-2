@@ -1,14 +1,10 @@
-package com.psi.project.users;
+package com.psi.project.user;
 
-import com.psi.project.users.valueobjects.EmailValidator;
-import com.psi.project.users.valueobjects.PeselValidator;
-import com.psi.project.users.valueobjects.TypeValidator;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import com.psi.project.user.valueobjects.EmailValidator;
+import com.psi.project.user.valueobjects.TypeValidator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.Optional;
 

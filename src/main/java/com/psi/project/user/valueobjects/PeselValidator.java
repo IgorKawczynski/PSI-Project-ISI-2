@@ -1,10 +1,9 @@
-package com.psi.project.users.valueobjects;
+package com.psi.project.user.valueobjects;
 
 import com.psi.project.core.interfaces.CoreValidator;
-import com.psi.project.users.exceptions.IllegalPeselException;
+import com.psi.project.user.exceptions.IllegalPeselException;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -22,11 +21,13 @@ public class PeselValidator implements CoreValidator {
 
     public PeselValidator(String pesel) {
         if ( Objects.isNull(pesel) )
-            throw new IllegalPeselException("PESEL can not be null!");
+            throw new IllegalPeselException("Pesel is necessary!");
+        if ( pesel.isEmpty() )
+            throw new IllegalPeselException("Pesel can not be empty!");
         if ( !(pesel.length() == 11) )
-            throw new IllegalPeselException("PESEL must have exactly 11 digits!");
+            throw new IllegalPeselException("Pesel must have exactly 11 digits!");
         if ( pesel.contains(DIGITS) )
-            throw new IllegalPeselException("PESEL may contain only digits!");
+            throw new IllegalPeselException("Pesel may contain only digits!");
         this.pesel = pesel;
     }
 

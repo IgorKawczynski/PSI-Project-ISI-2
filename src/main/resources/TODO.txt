@@ -1,6 +1,6 @@
 ********************************* THINGS TO DO *********************************
 
-1. Modyfikacja modelu bazy danych
+1. Modyfikacja modelu bazy danych - DONE
 2. Rozbudowa nowego modelu bazy danych
 3. Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
 4. Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy

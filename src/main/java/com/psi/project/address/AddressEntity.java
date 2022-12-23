@@ -1,7 +1,7 @@
 package com.psi.project.address;
 
 import com.psi.project.core.CoreEntity;
-import com.psi.project.users.UserEntity;
+import com.psi.project.user.UserEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;

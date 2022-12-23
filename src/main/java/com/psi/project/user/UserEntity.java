@@ -1,10 +1,11 @@
-package com.psi.project.users;
+package com.psi.project.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.address.AddressEntity;
 import com.psi.project.core.CoreEntity;
 import com.psi.project.items.ItemEntity;
-import com.psi.project.users.valueobjects.*;
+import com.psi.project.trade.TradeEntity;
+import com.psi.project.user.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -29,8 +30,17 @@ public class UserEntity extends CoreEntity implements Serializable  {
     @Embedded
     @Column(unique = true)
     EmailValidator email;
+
     @Embedded
-    UsernameValidator username;
+    @AttributeOverrides({
+            @AttributeOverride(name = "name", column = @Column(name = "first_name"))
+    })
+    private NameValidator firstName;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "name", column = @Column(name = "last_name"))
+    })
+    private NameValidator lastName;
     @Embedded
     PasswordValidator password;
     @Embedded
@@ -44,18 +54,25 @@ public class UserEntity extends CoreEntity implements Serializable  {
     @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
     List<ItemEntity> itemEntities;
 
+//    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+//    List<TradeEntity> tradeEntities;
+
+//    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+//    List<OpinionEntity> opinionEntities;
 
     @Builder
     public UserEntity(
             EmailValidator email,
-            UsernameValidator username,
+            NameValidator firstName,
+            NameValidator lastName,
             PasswordValidator password,
             PeselValidator pesel,
             TypeValidator type,
             AddressEntity addressEntity
     ) {
         this.email = email;
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.pesel = pesel;
         this.type = type;

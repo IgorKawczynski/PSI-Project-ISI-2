@@ -1,9 +1,10 @@
-package com.psi.project.users.dtos;
+package com.psi.project.user.dtos;
 
 import lombok.Builder;
 
 public record UserRequestDTO(String email,
-                             String username,
+                             String firstName,
+                             String lastName,
                              String password,
                              String pesel,
                              String type,

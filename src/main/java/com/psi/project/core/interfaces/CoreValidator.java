@@ -27,5 +27,8 @@ public interface CoreValidator {
         return stringToCheck.length() > minimumLength - 1 && stringToCheck.length() < maximumLength + 1;
     }
 
+    default boolean matchesPattern(String stringToCheck, String pattern){
+        return stringToCheck.matches(pattern);
+    }
 
 }

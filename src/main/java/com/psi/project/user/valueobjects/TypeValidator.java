@@ -1,4 +1,4 @@
-package com.psi.project.users.valueobjects;
+package com.psi.project.user.valueobjects;
 
 public enum TypeValidator {
 

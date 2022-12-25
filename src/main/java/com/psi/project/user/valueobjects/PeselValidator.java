@@ -2,8 +2,10 @@ package com.psi.project.user.valueobjects;
 
 import com.psi.project.core.interfaces.CoreValidator;
 import com.psi.project.user.exceptions.IllegalPeselException;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -14,6 +16,7 @@ import java.util.Objects;
 @NotNull
 @NoArgsConstructor
 @EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class PeselValidator implements CoreValidator {
 
     @Column

@@ -1,12 +1,12 @@
 ********************************* THINGS TO DO *********************************
 
-1. Modyfikacja modelu bazy danych - DONE
-2. Rozbudowa nowego modelu bazy danych
-3. Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów
-4. Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy
+1. Modyfikacja modelu bazy danych -- DONE
+2. Rozbudowa nowego modelu bazy danych - W TRAKCIE (ADAM)
+3. Error Lista do restów -- implementacja bledów, wiadomosci i stacktrace'ów -- W TRAKCIE (IGOR)
+4. Do poprawki własne exceptiony -> własny message + defaultowy z IllegalArgumentException/Innej klasy -- W TRAKCIE (IGOR)
 5. Dodanie uprawnień zależnie od typu usera ('CLIENT' i 'ADMIN') - Permissions (może logowanie na starcie?)
-   a) Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów,
-   b) Dodaj endpointy, które są dostępne tylko dla administratora.
+   a) Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów, -- DONE
+   b) Dodaj endpointy, które są dostępne tylko dla administratora. -- DONE
    c) Ustaw niektóre resty (typu dodaj usera) tylko dla Admina -> gety dla usera daj dla Klienta
 6. Upgrade filtrowania i paginacji dla większej ilości metod (dla wszystkich getów)
    a) W związach jeden do wielu po stronie jeden wstaw linki do rekordów po stronie wiele - użyj HyperlinkedRelatedField z klasy HyperlinkedModelSerializer
@@ -14,6 +14,14 @@
    c) Ustaw filtry i sortowanie na poszczególne widoki
    d) Dodaj własne filtry na datę i liczby jako przedział od - do
 7. TESTY; /src/test/... --> https://gitlab.com/pdrozda/psi-cwiczenia/-/tree/master/08%20Autentykacja,%20Testowanie
+8. Część zaimplementowana w GraphQL
+   a) Stworzenie modeli przystosowanych do GraphQL -- DONE
+   b) Stworzenie na podstawie stworzonych modeli bazy danych
+   c) Stworzenie mutacji (dodanie, usuniecie, modyfikacja danych)
+   d) Zarejestrowanie modeli w głównym widoku
+   e) Dodanie przykładowych danych -- DONE
+   f) Utworzenie kilkunastu przykładowych zapytań (z wykorzystaniem kluczy obcych)
+   g) Utworzenie 5 przykładowych mutacji
 
 ********************************* NOTES *********************************
 

@@ -1,0 +1,38 @@
+type Query {
+  addressById(id: ID): Address
+  userById(id: ID): User
+  itemById(id: ID): Item
+  tradeById(id: ID): Trade
+}
+
+type Address {
+  id: ID
+  city: String
+  street: String
+}
+
+type User {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  pesel: String
+  address: Address
+}
+
+type Item {
+  id: ID
+  name: String
+  cost: Int
+  user: User
+}
+
+type Trade {
+  id: ID
+  value: Int
+  buyer: User
+  seller: User
+}
+
+
+

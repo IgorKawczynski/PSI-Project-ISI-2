@@ -1,6 +1,4 @@
-package com.psi.project.items.valueobjects;
-
-import javax.persistence.Embeddable;
+package com.psi.project.item.valueobjects;
 
 public enum CategoryValidator {
 

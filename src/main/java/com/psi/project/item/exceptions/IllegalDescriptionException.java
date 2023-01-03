@@ -1,4 +1,4 @@
-package com.psi.project.items.exceptions;
+package com.psi.project.item.exceptions;
 
 public class IllegalDescriptionException extends IllegalArgumentException{
 

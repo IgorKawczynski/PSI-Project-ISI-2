@@ -1,8 +1,8 @@
-package com.psi.project.items;
+package com.psi.project.item;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.core.CoreEntity;
-import com.psi.project.items.valueobjects.*;
+import com.psi.project.item.valueobjects.*;
 import com.psi.project.user.UserEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,9 +19,9 @@ import java.io.Serializable;
 @Table(name = "item")
 @Getter
 @Setter
+@Entity
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
 public class ItemEntity extends CoreEntity implements Serializable {
 
     @Embedded
@@ -40,11 +40,6 @@ public class ItemEntity extends CoreEntity implements Serializable {
     @JoinColumn(name = "seller_id", nullable = true)
     @JsonBackReference
     UserEntity userId;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "trade_id", nullable = true)
-//    @JsonBackReference
-//    @LazyToOne(LazyToOneOption.NO_PROXY)
-//    TradeEntity tradeId;
 
     @Builder
     public ItemEntity(
@@ -54,7 +49,6 @@ public class ItemEntity extends CoreEntity implements Serializable {
             CategoryValidator category,
             StatusValidator status,
             UserEntity userId
-//            ,TradeEntity tradeId
 
     ) {
         this.itemName = itemName;
@@ -63,6 +57,5 @@ public class ItemEntity extends CoreEntity implements Serializable {
         this.category = category;
         this.status = status;
         this.userId = userId;
-//        this.tradeId = tradeId;
     }
 }

@@ -1,4 +1,4 @@
-package com.psi.project.items.valueobjects;
+package com.psi.project.item.valueobjects;
 
 public enum StatusValidator {
 

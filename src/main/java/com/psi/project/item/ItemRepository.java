@@ -1,4 +1,4 @@
-package com.psi.project.items;
+package com.psi.project.item;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

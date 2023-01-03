@@ -1,9 +1,10 @@
-package com.psi.project.items;
+package com.psi.project.item;
 
 
-import com.psi.project.items.dtos.ItemDTO;
-import com.psi.project.items.valueobjects.DescriptionValidator;
-import com.psi.project.items.valueobjects.PriceValidator;
+import com.psi.project.item.dtos.ItemRequestDTO;
+import com.psi.project.item.dtos.ItemResponseDTO;
+import com.psi.project.item.valueobjects.DescriptionValidator;
+import com.psi.project.item.valueobjects.PriceValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -28,21 +29,22 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
-    public List<ItemDTO> getItems() {
-        var items = itemRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        return itemMapper.fromItemEntityListToItemDTOList(items);
+    public List<ItemResponseDTO> getItems() {
+        var items = itemRepository.findAll(Sort.by(Sort.Direction.ASC, "itemName"));
+        return itemMapper.fromItemEntityListToItemResponseList(items);
     }
 
-    public ItemDTO getItemById(Long id){
+    public ItemResponseDTO getItemById(Long id){
         var item =
                 itemRepository
                 .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Item with id: " + id + " does not exist!"));
-        return itemMapper.fromItemEntityToItemDTO(item);
+        return itemMapper.fromItemEntityToItemResponseDTO(item);
     }
 
-    public void addItem(ItemEntity itemEntity) {
-        itemRepository.save(itemEntity);
+    public void addItem(ItemRequestDTO itemRequestDTO) {
+        var item = itemMapper.fromItemRequestDTOToItemEntity(itemRequestDTO);
+        itemRepository.save(item);
     }
 
     public String updateItemById(Long id, String description, Double price) {

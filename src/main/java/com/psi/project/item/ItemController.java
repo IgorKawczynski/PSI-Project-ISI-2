@@ -1,9 +1,9 @@
-package com.psi.project.items;
+package com.psi.project.item;
 
-import com.psi.project.items.dtos.ItemDTO;
+import com.psi.project.item.dtos.ItemRequestDTO;
+import com.psi.project.item.dtos.ItemResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  */
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/item")
 public class ItemController {
 
     private final ItemService itemService;
@@ -26,20 +26,20 @@ public class ItemController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<ItemDTO> getItems() {
+    public List<ItemResponseDTO> getItems() {
         return itemService.getItems();
     }
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.FOUND)
-    public ItemDTO getItemById(@RequestParam("id") Long id) {
+    public ItemResponseDTO getItemById(@RequestParam("id") Long id) {
         return itemService.getItemById(id);
     }
 
-    @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addItem(@RequestBody ItemEntity itemEntity) {
-        itemService.addItem(itemEntity);
+    public void addItem(@RequestBody ItemRequestDTO itemRequestDTO) {
+        itemService.addItem(itemRequestDTO);
     }
 
     @PatchMapping("")

@@ -35,8 +35,8 @@ public class UserService {
     public List<UserResponseDTO> getUsers(Integer page) {
 
         Pageable sortedByUsername = PageRequest.of(
-                page, PAGESIZE, Sort.by(Sort.Direction.ASC, "username")
-                                       .and(Sort.by(Sort.Direction.ASC, "email"))
+                page, PAGESIZE, Sort.by(Sort.Direction.ASC, "firstName")
+                                       .and(Sort.by(Sort.Direction.ASC, "lastName"))
         );
 
         var users =

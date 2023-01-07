@@ -67,7 +67,7 @@ public class ItemMapper {
                 .category(CategoryValidator.valueOf(itemRequestDTO.category()))
                 .status(StatusValidator.valueOf(itemRequestDTO.status()))
 //                .userId(userRepository.findUserEntityById(itemRequestDTO.sellerId()))
-//                WYMAGANY TYP UserEntity a jest optional <?>
+// TODO: Poprawić to: WYMAGANY TYP UserEntity a jest optional <?>
                 .build();
     }
 }

@@ -3,6 +3,7 @@ package com.psi.project.item;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.core.CoreEntity;
 import com.psi.project.item.valueobjects.*;
+import com.psi.project.trade.TradeEntity;
 import com.psi.project.user.UserEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -40,6 +41,10 @@ public class ItemEntity extends CoreEntity implements Serializable {
     @JoinColumn(name = "seller_id", nullable = true)
     @JsonBackReference
     UserEntity userId;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    TradeEntity tradeId;
 
     @Builder
     public ItemEntity(

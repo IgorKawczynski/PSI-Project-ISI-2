@@ -1,4 +1,6 @@
 package com.psi.project.trade;
 
-public interface TradeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TradeRepository extends JpaRepository<TradeEntity, Long> {
 }

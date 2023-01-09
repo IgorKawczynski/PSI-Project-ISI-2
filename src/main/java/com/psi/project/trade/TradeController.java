@@ -2,6 +2,7 @@ package com.psi.project.trade;
 
 import com.psi.project.trade.dtos.TradeRequestDTO;
 import com.psi.project.trade.dtos.TradeResponseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ public class TradeController {
 
     private final TradeService tradeService;
 
+    @Autowired
     public TradeController(TradeService tradeService) {
         this.tradeService = tradeService;
     }

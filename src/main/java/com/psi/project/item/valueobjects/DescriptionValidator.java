@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -15,6 +16,7 @@ import javax.persistence.Embeddable;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DescriptionValidator implements CoreValidator {
 
+    @Column
     String description;
 
     public DescriptionValidator(String description) {

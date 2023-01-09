@@ -3,6 +3,7 @@ package com.psi.project.trade;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.core.CoreEntity;
 import com.psi.project.item.ItemEntity;
+import com.psi.project.opinion.OpinionEntity;
 import com.psi.project.trade.valueobjects.ValueValidator;
 import com.psi.project.user.UserEntity;
 import lombok.*;
@@ -34,14 +35,9 @@ public class TradeEntity extends CoreEntity implements Serializable {
     @JsonBackReference
     ItemEntity itemEntity;
 
-//    @OneToOne
-//    @JoinColumn(name = "id")
-//    OpinionEntity opinionId;
-
-// To w opinionEntity:
-//    @OneToOne(mappedBy = "opinionId", fetch = FetchType.LAZY)
-//    @JsonBackReference
-//    TradeEntity tradeEntity;
+    @OneToOne
+    @JoinColumn(name = "id")
+    OpinionEntity opinionId;
 
     @Builder
     public TradeEntity(

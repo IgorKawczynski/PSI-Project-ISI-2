@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.psi.project.address.AddressEntity;
 import com.psi.project.core.CoreEntity;
 import com.psi.project.item.ItemEntity;
+import com.psi.project.opinion.OpinionEntity;
 import com.psi.project.trade.TradeEntity;
 import com.psi.project.user.valueobjects.*;
 import lombok.*;
@@ -57,8 +58,8 @@ public class UserEntity extends CoreEntity implements Serializable  {
     @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
     List<TradeEntity> tradeEntities;
 
-//    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
-//    List<OpinionEntity> opinionEntities;
+    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+    List<OpinionEntity> opinionEntities;
 
     @Builder
     public UserEntity(

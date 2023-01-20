@@ -30,29 +30,35 @@ public class UserController {
     public List<UserResponseDTO> getUsers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
         return userService.getUsers(page);
     }
+
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.FOUND)
     public UserResponseDTO getUserByEmail(@RequestParam("email") String email) {
         return userService.getUserByEmail(email);
     }
+
     @GetMapping("/where")
     @ResponseStatus(HttpStatus.FOUND)
     public List<UserResponseDTO> findUsersByType(@RequestParam("type") String type) {
         return userService.findUsersByType(type);
     }
+
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@RequestBody UserRequestDTO userRequestDTO) {
         userService.addUser(userRequestDTO);
     }
-    @PatchMapping("{id}")
+
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String changeUserEmail(@PathVariable("id") Long id, @RequestBody String email) {
         return userService.updateUserEmailById(id, new EmailValidator(email));
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String deleteUserById(@PathVariable Long id) {
         return userService.deleteUser(id);
     }
+
 }

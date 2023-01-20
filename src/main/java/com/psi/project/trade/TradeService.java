@@ -1,6 +1,8 @@
 package com.psi.project.trade;
 
-import com.psi.project.trade.dtos.TradeRequestDTO;
+import com.psi.project.item.ItemRepository;
+import com.psi.project.item.valueobjects.StatusValidator;
+import com.psi.project.trade.dtos.TradeCreateDTO;
 import com.psi.project.trade.dtos.TradeResponseDTO;
 import com.psi.project.trade.valueobjects.ValueValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,13 @@ public class TradeService {
 
     private final TradeMapper tradeMapper;
 
+    private final ItemRepository itemRepository;
+
     @Autowired
-    public TradeService(TradeRepository tradeRepository, TradeMapper tradeMapper) {
+    public TradeService(TradeRepository tradeRepository, TradeMapper tradeMapper, ItemRepository itemRepository) {
         this.tradeRepository = tradeRepository;
         this.tradeMapper = tradeMapper;
+        this.itemRepository = itemRepository;
     }
 
     public List<TradeResponseDTO> getTrades() {
@@ -35,9 +40,15 @@ public class TradeService {
         return tradeMapper.fromTradeEntityToTradeResponseDTO(trade);
     }
 
-    public void addTrade(TradeRequestDTO tradeRequestDTO) {
-        var trade = tradeMapper.fromTradeRequestDTOToTradeEntity(tradeRequestDTO);
+    public String addTrade(TradeCreateDTO tradeCreateDTO) {
+        var trade = tradeMapper.fromTradeCreateDTOToTradeEntity(tradeCreateDTO);
         tradeRepository.save(trade);
+
+        var item = itemRepository.findItemEntityById(trade.getItemEntity().getId());
+        item.setStatus(StatusValidator.UNAVAILABLE);
+        itemRepository.save(item);
+
+        return "Successfully bought an item!";
     }
 
     public String updateTradeById(Long id, Double value) {

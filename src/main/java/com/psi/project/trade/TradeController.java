@@ -1,6 +1,6 @@
 package com.psi.project.trade;
 
-import com.psi.project.trade.dtos.TradeRequestDTO;
+import com.psi.project.trade.dtos.TradeCreateDTO;
 import com.psi.project.trade.dtos.TradeResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,11 +33,11 @@ public class TradeController {
 
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addTrade(@RequestBody TradeRequestDTO tradeRequestDTO) {
-        tradeService.addTrade(tradeRequestDTO);
+    public String buyItem(@RequestBody TradeCreateDTO tradeCreateDTO) {
+        return tradeService.addTrade(tradeCreateDTO);
     }
 
-    @PatchMapping("")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String updateTradeById(@PathVariable Long id, @RequestBody Double value) {
         return tradeService.updateTradeById(id, value);

@@ -31,7 +31,7 @@ public class TradeEntity extends CoreEntity implements Serializable {
     @JsonBackReference
     UserEntity userId;
 
-    @OneToOne(mappedBy = "tradeId", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "tradeId", fetch = FetchType.EAGER)
     @JsonBackReference
     ItemEntity itemEntity;
 

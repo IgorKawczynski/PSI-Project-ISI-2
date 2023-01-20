@@ -1,6 +1,7 @@
 package com.psi.project.trade;
 
 import com.psi.project.item.ItemRepository;
+import com.psi.project.trade.dtos.TradeCreateDTO;
 import com.psi.project.trade.dtos.TradeRequestDTO;
 import com.psi.project.trade.dtos.TradeResponseDTO;
 import com.psi.project.trade.valueobjects.ValueValidator;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Component
 public class TradeMapper {
 
+    private static final double SHIPPING_PRICE = 15.99;
     private final ItemRepository itemRepository;
 
     private final UserRepository userRepository;
@@ -55,8 +57,18 @@ public class TradeMapper {
         return TradeEntity.builder()
                 .value(new ValueValidator(tradeRequestDTO.value()))
                 .itemEntity(itemRepository.findItemEntityById(tradeRequestDTO.itemEntity().getId()))
-//                .userId(userRepository.findUserEntityById(tradeRequestDTO.userEntity().getId()))
-// TODO: Poprawić to: WYMAGANY TYP UserEntity a jest optional <?>
+                .userId(userRepository.findUser(tradeRequestDTO.userEntity().getId()))
+                .build();
+    }
+
+    public TradeEntity fromTradeCreateDTOToTradeEntity(TradeCreateDTO tradeCreateDTO) {
+        var item = itemRepository.findItemEntityById(tradeCreateDTO.itemId());
+        var buyer = userRepository.findUser(tradeCreateDTO.userId());
+
+        return TradeEntity.builder()
+                .value(new ValueValidator(item.getPrice().toDouble() + SHIPPING_PRICE))
+                .itemEntity(item)
+                .userId(buyer)
                 .build();
     }
 }

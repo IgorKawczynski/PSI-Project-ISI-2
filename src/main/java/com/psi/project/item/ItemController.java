@@ -2,6 +2,7 @@ package com.psi.project.item;
 
 import com.psi.project.item.dtos.ItemRequestDTO;
 import com.psi.project.item.dtos.ItemResponseDTO;
+import com.psi.project.item.dtos.ItemUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,10 @@ public class ItemController {
     }
 
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ItemResponseDTO> getItems() {
-        return itemService.getItems();
+    @ResponseStatus(HttpStatus.FOUND)
+    public List<ItemResponseDTO> getItems(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+                                          @RequestParam(value = "name", required = false) String name) {
+        return itemService.getItems(page, name);
     }
 
     @GetMapping("")
@@ -42,13 +44,11 @@ public class ItemController {
         itemService.addItem(itemRequestDTO);
     }
 
-    @PatchMapping("")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String updateItemById(@PathVariable Long id,
-                                 @RequestBody String description,
-                                 @RequestBody Double price)
+    public String updateItemById(@PathVariable Long id, @RequestBody ItemUpdateDTO itemUpdateDTO)
     {
-        return itemService.updateItemById(id, description, price);
+        return itemService.updateItemById(id, itemUpdateDTO);
     }
 
     @DeleteMapping("/{id}")

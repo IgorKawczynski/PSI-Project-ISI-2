@@ -22,8 +22,6 @@ public class DescriptionValidator implements CoreValidator {
     public DescriptionValidator(String description) {
         if( !isValidLength(description, 0, 255) )
             throw new IllegalDescriptionException("Description must be between 0 and 255 characters length!");
-        if( !containsValidCharacters(description) )
-            throw new IllegalDescriptionException("Description may contain only english letters and special chars!");
         this.description = description;
     }
 

@@ -23,4 +23,10 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
     @Query(value = "SELECT * FROM item WHERE item_name LIKE :name", nativeQuery = true)
     Page<ItemEntity> findAllByItemNameBeginningWith(@Param("name") String name, Pageable pageable);
 
+    @Query(value = "SELECT * FROM item WHERE item_name LIKE :name AND status='AVAILABLE'", nativeQuery = true)
+    Page<ItemEntity> findAllByItemNameBeginningWithAndAvailable(@Param("name") String name, Pageable pageable);
+
+    @Query(value = "SELECT * FROM item WHERE item_name LIKE :name AND status='UNAVAILABLE'", nativeQuery = true)
+    Page<ItemEntity> findAllByItemNameBeginningWithAndUnavailable(@Param("name") String name, Pageable pageable);
+
 }

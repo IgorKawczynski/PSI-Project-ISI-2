@@ -50,12 +50,15 @@ public class ItemService {
 //        return ;
 //    }
 
-    public List<ItemResponseDTO> getItems(Integer page, String name) {
+    public List<ItemResponseDTO> getItems(Integer page, String name, boolean availability) {
         if ( name == null) name = "";
         name = name.concat("%");
         Pageable sortedByItemName = PageRequest.of(page, PAGESIZE, Sort.Direction.ASC, "item_name");
 
-        Page<ItemEntity> items = itemRepository.findAllByItemNameBeginningWith(name, sortedByItemName);
+        Page<ItemEntity> items;
+        if(availability) items = itemRepository.findAllByItemNameBeginningWithAndAvailable(name,sortedByItemName);
+        else items = itemRepository.findAllByItemNameBeginningWithAndUnavailable(name, sortedByItemName);
+
         return items.stream().map(itemMapper::fromItemEntityToItemResponseDTO).collect(Collectors.toList());
     }
 

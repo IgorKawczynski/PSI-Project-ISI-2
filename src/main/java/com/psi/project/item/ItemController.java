@@ -28,8 +28,9 @@ public class ItemController {
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
     public List<ItemResponseDTO> getItems(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-                                          @RequestParam(value = "name", required = false) String name) {
-        return itemService.getItems(page, name);
+                                          @RequestParam(value = "name", required = false) String name,
+                                          @RequestParam(value = "availability", defaultValue = "1") boolean availability) {
+        return itemService.getItems(page, name, availability);
     }
 
     @GetMapping("")

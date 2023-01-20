@@ -20,8 +20,14 @@ public class AddressController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<AddressResponseDTO> getAddresses() {
-        return addressService.getAddresses();
+    public List<AddressResponseDTO> getAddresses(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
+        return addressService.getAddresses(page);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.FOUND)
+    public AddressResponseDTO getAddressById(@PathVariable Long id) {
+        return addressService.getAddressesById(id);
     }
 
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")

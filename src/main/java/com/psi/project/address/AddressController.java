@@ -36,4 +36,16 @@ public class AddressController {
          addressService.addAddress(addressRequestDTO);
     }
 
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String changeAddressById(@PathVariable("id") Long id, @RequestBody AddressRequestDTO newAddress) {
+        return addressService.updateAddressById(id, newAddress);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String deleteAddressById(@PathVariable("id") Long id) {
+        return addressService.deleteAddressById(id);
+    }
+
 }

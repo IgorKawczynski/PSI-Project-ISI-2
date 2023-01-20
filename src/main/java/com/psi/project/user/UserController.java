@@ -1,6 +1,6 @@
 package com.psi.project.user;
 
-import com.psi.project.user.dtos.UserRequestDTO;
+import com.psi.project.user.dtos.UserCreateDTO;
 import com.psi.project.user.dtos.UserResponseDTO;
 import com.psi.project.user.valueobjects.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +45,8 @@ public class UserController {
 
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addUser(@RequestBody UserRequestDTO userRequestDTO) {
-        userService.addUser(userRequestDTO);
+    public String addUser(@RequestBody UserCreateDTO userCreateDTO) {
+        return userService.addUser(userCreateDTO);
     }
 
     @PatchMapping("/{id}")

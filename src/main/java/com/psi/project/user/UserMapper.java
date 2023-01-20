@@ -1,6 +1,8 @@
 package com.psi.project.user;
 
+import com.psi.project.address.AddressEntity;
 import com.psi.project.address.AddressRepository;
+import com.psi.project.user.dtos.UserCreateDTO;
 import com.psi.project.user.dtos.UserRequestDTO;
 import com.psi.project.user.dtos.UserResponseDTO;
 import com.psi.project.user.valueobjects.*;
@@ -72,4 +74,22 @@ public class UserMapper {
                 .addressEntity(addressRepository.findAddressEntityById(userRequestDTO.addressId()))
                 .build();
     }
+
+    public UserEntity fromUserCreateDTOToUserEntity(UserCreateDTO userCreateDTO) {
+        return UserEntity.builder()
+                .email(new EmailValidator(userCreateDTO.email()))
+                .firstName(new NameValidator(userCreateDTO.firstName()))
+                .lastName(new NameValidator(userCreateDTO.lastName()))
+                .password(new PasswordValidator(userCreateDTO.password()))
+                .pesel(new PeselValidator(userCreateDTO.pesel()))
+                .type(TypeValidator.CLIENT)
+                .addressEntity(createNewAddress())
+                .build();
+    }
+
+    private AddressEntity createNewAddress() {
+        var address = new AddressEntity();
+        return addressRepository.save(address);
+    }
+
 }

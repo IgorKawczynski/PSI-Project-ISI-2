@@ -1,6 +1,6 @@
 package com.psi.project.user;
 
-import com.psi.project.user.dtos.UserRequestDTO;
+import com.psi.project.user.dtos.UserCreateDTO;
 import com.psi.project.user.dtos.UserResponseDTO;
 import com.psi.project.user.valueobjects.EmailValidator;
 import com.psi.project.user.valueobjects.TypeValidator;
@@ -63,9 +63,10 @@ public class UserService {
         return userMapper.fromUserEntityListToUserResponseList(users);
     }
 
-    public void addUser(UserRequestDTO userRequestDTO) {
-        var user = userMapper.fromUserRequestDTOToUserEntity(userRequestDTO);
+    public String addUser(UserCreateDTO userCreateDTO) {
+        var user = userMapper.fromUserCreateDTOToUserEntity(userCreateDTO);
         userRepository.save(user);
+        return "Successfully added user";
     }
 
     public String updateUserEmailById(Long id, EmailValidator email) {

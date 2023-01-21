@@ -19,22 +19,26 @@ public class TradeController {
         this.tradeService = tradeService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all/{buyerId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<TradeResponseDTO> getTrades() {
-        return tradeService.getTrades();
+    public List<TradeResponseDTO> getTradesByBuyerId(@PathVariable Long buyerId,
+                                                     @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
+        return tradeService.getTradesByBuyerId(buyerId, page);
+//        TODO POPRAWIĆ ZWRACANIE itemEntity: null
     }
 
-    @GetMapping("")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.FOUND)
-    public TradeResponseDTO getTradeById(@RequestParam("id") Long id) {
+    public TradeResponseDTO getTradeById(@PathVariable Long id) {
         return tradeService.getTradeById(id);
+//        TODO POPRAWIĆ ZWRACANIE itemEntity: null
     }
 
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public String buyItem(@RequestBody TradeCreateDTO tradeCreateDTO) {
         return tradeService.addTrade(tradeCreateDTO);
+//       TODO Field 'item_id' doesn't have a default value
     }
 
     @PatchMapping("/{id}")

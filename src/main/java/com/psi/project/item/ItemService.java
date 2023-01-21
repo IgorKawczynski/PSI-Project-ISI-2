@@ -36,20 +36,6 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
-//    public List<ItemResponseDTO> getItems(Integer page, String name) {
-//        Pageable sortedByItemName = PageRequest.of(page, PAGESIZE, Sort.Direction.ASC, "itemName");
-//
-//        var items = itemRepository.findAll(sortedByItemName);
-//
-//        itemRepository.fin
-//
-//        if (name != null) {
-//            items = items.filter(i -> i.getItemName().toString().startsWith(name));
-//        }
-//
-//        return ;
-//    }
-
     public List<ItemResponseDTO> getItems(Integer page, String name, boolean availability) {
         if ( name == null) name = "";
         name = name.concat("%");

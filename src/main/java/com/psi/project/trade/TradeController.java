@@ -31,6 +31,12 @@ public class TradeController {
         return tradeService.getTradeById(id);
     }
 
+    @GetMapping("/get-trade")
+    @ResponseStatus(HttpStatus.FOUND)
+    public TradeEntity getTradeEntityById(@RequestParam("id") Long id) {
+        return tradeService.getTradeEntityById(id);
+    }
+
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public String buyItem(@RequestBody TradeCreateDTO tradeCreateDTO) {

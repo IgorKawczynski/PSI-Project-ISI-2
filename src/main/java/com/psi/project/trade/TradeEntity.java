@@ -25,14 +25,14 @@ public class TradeEntity extends CoreEntity implements Serializable {
     @Embedded
     ValueValidator value;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @LazyToOne(LazyToOneOption.NO_PROXY)
     @JoinColumn(name = "buyer_id", nullable = true)
     @JsonBackReference
     UserEntity userId;
 
-    @OneToOne(mappedBy = "tradeId", fetch = FetchType.EAGER)
-    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "item_id")
     ItemEntity itemEntity;
 
     @OneToOne

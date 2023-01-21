@@ -55,6 +55,7 @@ public class WebSecurityConfig {
                 .antMatchers("/items/**").hasAnyRole("CLIENT")
                 .antMatchers("/address/**").hasAnyRole("CLIENT")
                 .antMatchers("/users/**").hasAnyRole("ADMIN")
+                .antMatchers("/graphiql/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()

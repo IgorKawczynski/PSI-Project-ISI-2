@@ -1,15 +1,34 @@
 ********************************* THINGS TO DO *********************************
 
-1. TESTY; /src/test/... --> https://gitlab.com/pdrozda/psi-cwiczenia/-/tree/master/08%20Autentykacja,%20Testowanie --------------
+1. TESTY
+    a) Do wybranych dwóch modeli dodaj właściciela, jako użytkownika wbudowanego w Django
+    b) Ustaw różne opcje praw dostępu dla poszczególnych modeli - tak, aby były w miarę sensowne
+    c) Przy dodawaniu rekordów do modeli z właścicielem - ustaw automatycznie właściciela jako użytkownika, który dany rekord stworzył
+    d) Dodaj widoki dla użytkowników bez możliwości modyfikacji
+    e) Zadania dotyczące testowania w oparciu o POSTMANa:
+        a2) Stwórz kolekcję, która będzie zawierała Requesty "GET, POST, PUT, DELETE"
+        b2) Użyj zmiennych lokalnych, globalnych i środowiskowych
+        c2) Stwórz testy, które będą pobierały i porównywały wcześniej stworzone zmienne w testach
+        d2) Za pomocą testów stwórz i zapisz nowe zmienne globalne, lokalne i środowiskowe.
+        e2) Stwórz Testy , które będą sprawdzały:
+                -kod odpowiedzi (201 lub 202)
+                -Czas odpowiedzi mniejszy niż (np. 300ms)
+                -Status odpowiedzi "OK"
+                -Content type
 
 2. Część zaimplementowana w GraphQL ---------------------------------------------------------------------------------------------
-   a) Stworzenie modeli przystosowanych do GraphQL -- DONE
-   b) Stworzenie na podstawie stworzonych modeli bazy danych
-   c) Stworzenie mutacji (dodanie, usuniecie, modyfikacja danych)
-   d) Zarejestrowanie modeli w głównym widoku
-   e) Dodanie przykładowych danych -- DONE
-   f) Utworzenie kilkunastu przykładowych zapytań (z wykorzystaniem kluczy obcych)
-   g) Utworzenie 5 przykładowych mutacji
+   a) Stwórz nowy projekt w Django, -- OK
+   b) Przygotuj co najmniej 3 modele połączone kluczami obcymi - można się posiłkować aplikacją REST, -- OK
+   c) Zmigruj modele na bazę zewnętrzną, -- OK
+   d) Przygotuj plik schema z odpowiednimi klasami opartymi o DjangoObjectType, -- OK
+   e) Przygotuj klasę Query wyświetlającą dane, -- OK
+   f) Przygotuj mutację dla poszczególnych modeli obsługujące dodawanie, modyfikację i usuwanie danych, -- nieOK
+   g) Dodaj ścieżkę dla GraphQL w pliku urls.py, -- OK
+   h) Zarejestruj modele w pliku admin.py, -- OK?
+   i) Stwórz superusera, -- nieOK
+   j) Dodaj przykładowe dane z poziomu admina, -- nieOK
+   k) Przygotuj 5 przykładowych zapytań, w wykorzystaniem danych z wielu modeli, -- nieOK
+   l) Stwórz 5 przykładowych mutacji. -- nieOK
 
 ********************************* NOTES *********************************
 

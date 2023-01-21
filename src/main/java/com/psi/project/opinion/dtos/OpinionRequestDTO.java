@@ -5,7 +5,8 @@ import lombok.Builder;
 public record OpinionRequestDTO(Integer rate,
                                 String description,
                                 Long tradeId,
-                                Long userId) {
+                                Long userId,
+                                Long buyerId) {
 
     @Builder
     public OpinionRequestDTO {}

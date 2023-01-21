@@ -37,9 +37,9 @@ public class OpinionController {
         opinionService.addOpinion(opinionRequestDTO);
     }
 
-    @PatchMapping("")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String updateOpinionById(@PathVariable Long id, @RequestBody Integer rate, @RequestBody String description) {
+    public String updateOpinionById(@PathVariable Long id, @RequestParam Integer rate, @RequestParam String description) {
         return opinionService.updateOpinionById(id, rate, description);
     }
 

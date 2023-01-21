@@ -44,7 +44,6 @@ public class TradeController {
     @ResponseStatus(HttpStatus.CREATED)
     public String buyItem(@RequestBody TradeCreateDTO tradeCreateDTO) {
         return tradeService.addTrade(tradeCreateDTO);
-//       TODO Field 'item_id' doesn't have a default value
     }
 
     @PatchMapping("/{id}")

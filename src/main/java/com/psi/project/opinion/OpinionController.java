@@ -33,11 +33,11 @@ public class OpinionController {
 
     @PostMapping(path = "", produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addOpinion(@RequestBody OpinionRequestDTO opinionRequestDTO) {
-        opinionService.addOpinion(opinionRequestDTO);
+    public String addOpinion(@RequestBody OpinionRequestDTO opinionRequestDTO) {
+       return opinionService.addOpinion(opinionRequestDTO);
     }
 
-    @PatchMapping("")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String updateOpinionById(@PathVariable Long id, @RequestBody Integer rate, @RequestBody String description) {
         return opinionService.updateOpinionById(id, rate, description);

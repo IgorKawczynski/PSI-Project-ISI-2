@@ -58,8 +58,8 @@ public class OpinionMapper {
                 .rate(new RateValidator(opinionRequestDTO.rate()))
                 .description(new DescriptionValidator(opinionRequestDTO.description()))
                 .tradeEntity(tradeRepository.findTradeEntityById(opinionRequestDTO.tradeId()))
-//                .userId(userRepository.findUserEntityById(opinionRequestDTO.userId()))
-                // TODO: Poprawić to: WYMAGANY TYP UserEntity a jest optional <?>
+                .userId(userRepository.findUser(opinionRequestDTO.userId()))
+                .buyerId(tradeRepository.findTradeEntityById(opinionRequestDTO.tradeId()).getUserId().getId())
                 .build();
     }
 }

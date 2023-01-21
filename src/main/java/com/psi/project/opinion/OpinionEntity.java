@@ -27,28 +27,33 @@ public class OpinionEntity extends CoreEntity implements Serializable {
 
     @Embedded
     DescriptionValidator description;
-
-//    TODO: Dodać jeszcze mapowanie dla buyer_id (tak, jak jest w schemacie db)
-    @OneToOne(mappedBy = "opinionId", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "opinionId")
     @JsonBackReference
     TradeEntity tradeEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @LazyToOne(LazyToOneOption.NO_PROXY)
-    @JoinColumn(name = "user_id", nullable = true)
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     UserEntity userId;
+
+
+    //    TODO: Dodać jeszcze mapowanie dla buyer_id (tak, jak jest w schemacie db)
+    @Column
+    Long buyerId;
 
     @Builder
     public OpinionEntity(
             RateValidator rate,
             DescriptionValidator description,
             TradeEntity tradeEntity,
-            UserEntity userId
+            UserEntity userId,
+            Long buyerId
     ) {
         this.rate = rate;
         this.description = description;
         this.tradeEntity = tradeEntity;
         this.userId = userId;
+        this.buyerId = buyerId;
     }
 }

@@ -43,9 +43,10 @@ public class OpinionService {
         return opinionMapper.fromOpinionEntityToOpinionResponseDTO(opinion);
     }
 
-    public void addOpinion(OpinionRequestDTO opinionRequestDTO) {
+    public String addOpinion(OpinionRequestDTO opinionRequestDTO) {
         var opinion = opinionMapper.fromOpinionRequestDTOToOpinionEntity(opinionRequestDTO);
         opinionRepository.save(opinion);
+        return "Opinion added successfully!";
     }
 
     public String updateOpinionById(Long id, Integer rate, String description) {

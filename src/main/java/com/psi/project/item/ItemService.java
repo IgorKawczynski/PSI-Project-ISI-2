@@ -7,6 +7,7 @@ import com.psi.project.item.dtos.ItemUpdateDTO;
 import com.psi.project.item.valueobjects.DescriptionValidator;
 import com.psi.project.item.valueobjects.PriceValidator;
 import com.psi.project.item.valueobjects.StatusValidator;
+import com.psi.project.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,10 +31,16 @@ public class ItemService {
     private final static Integer PAGESIZE = 5;
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
+    private final UserRepository userRepository;
     @Autowired
-    public ItemService(ItemRepository itemRepository, ItemMapper itemMapper) {
+    public ItemService(
+            ItemRepository itemRepository,
+            ItemMapper itemMapper,
+            UserRepository userRepository
+    ) {
         this.itemRepository = itemRepository;
         this.itemMapper = itemMapper;
+        this.userRepository = userRepository;
     }
 
 //    public List<ItemResponseDTO> getItems(Integer page, String name) {
@@ -72,6 +79,8 @@ public class ItemService {
 
     public void addItem(ItemRequestDTO itemRequestDTO) {
         var item = itemMapper.fromItemRequestDTOToItemEntity(itemRequestDTO);
+        Long sellerId = itemRequestDTO.sellerId();
+        item.setUserId(userRepository.findUser(sellerId));
         itemRepository.save(item);
     }
 

@@ -43,7 +43,7 @@ public class ItemEntity extends CoreEntity implements Serializable {
     UserEntity userId;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "trade_id")
     TradeEntity tradeId;
 
     @Builder

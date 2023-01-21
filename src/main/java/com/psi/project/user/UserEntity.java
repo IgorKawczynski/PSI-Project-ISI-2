@@ -9,6 +9,7 @@ import com.psi.project.trade.TradeEntity;
 import com.psi.project.user.valueobjects.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,8 +49,7 @@ public class UserEntity extends CoreEntity implements Serializable  {
     PeselValidator pesel;
     @Enumerated(EnumType.STRING)
     TypeValidator type;
-    @OneToOne(mappedBy = "userId", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @OneToOne
     AddressEntity addressEntity;
 
     @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)

@@ -1,7 +1,9 @@
 package com.psi.project.user;
 
 import com.psi.project.address.AddressEntity;
+import com.psi.project.address.AddressMapper;
 import com.psi.project.address.AddressRepository;
+import com.psi.project.address.dtos.AddressRequestDTO;
 import com.psi.project.user.dtos.UserCreateDTO;
 import com.psi.project.user.dtos.UserRequestDTO;
 import com.psi.project.user.dtos.UserResponseDTO;
@@ -22,10 +24,12 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
     private final AddressRepository addressRepository;
+    private final AddressMapper addressMapper;
 
     @Autowired
-    public UserMapper(AddressRepository addressRepository) {
+    public UserMapper(AddressRepository addressRepository, AddressMapper addressMapper) {
         this.addressRepository = addressRepository;
+        this.addressMapper = addressMapper;
     }
 
     public UserResponseDTO fromUserEntityToUserResponseDTO(UserEntity userEntity){
@@ -83,13 +87,12 @@ public class UserMapper {
                 .password(new PasswordValidator(userCreateDTO.password()))
                 .pesel(new PeselValidator(userCreateDTO.pesel()))
                 .type(TypeValidator.CLIENT)
-                .addressEntity(createNewAddress())
+                .addressEntity(addressMapper.fromAddressRequestDTOToAddressEntity(userCreateDTO.addressRequestDTO()))
                 .build();
     }
 
-    private AddressEntity createNewAddress() {
-        var address = new AddressEntity();
-        return addressRepository.save(address);
+    private AddressEntity createNewAddress(AddressRequestDTO addressRequestDTO) {
+        return addressRepository.save(addressMapper.fromAddressRequestDTOToAddressEntity(addressRequestDTO));
     }
 
 }

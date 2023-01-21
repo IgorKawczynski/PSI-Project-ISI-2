@@ -5,6 +5,7 @@ import com.psi.project.item.valueobjects.StatusValidator;
 import com.psi.project.trade.dtos.TradeCreateDTO;
 import com.psi.project.trade.dtos.TradeResponseDTO;
 import com.psi.project.trade.valueobjects.ValueValidator;
+import com.psi.project.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,12 +27,19 @@ public class TradeService {
     private final TradeMapper tradeMapper;
 
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public TradeService(TradeRepository tradeRepository, TradeMapper tradeMapper, ItemRepository itemRepository) {
+    public TradeService(
+            TradeRepository tradeRepository,
+            TradeMapper tradeMapper,
+            ItemRepository itemRepository,
+            UserRepository userRepository
+    ) {
         this.tradeRepository = tradeRepository;
         this.tradeMapper = tradeMapper;
         this.itemRepository = itemRepository;
+        this.userRepository = userRepository;
     }
 
     public List<TradeResponseDTO> getTradesByBuyerId(Long buyerId, Integer page) {
@@ -44,17 +52,23 @@ public class TradeService {
     public TradeResponseDTO getTradeById(Long id) {
         var trade =
                 tradeRepository.findById(id)
-                        .orElseThrow(() -> new NoSuchElementException("Trade with id: " + id + "does not exist!"));
+                        .orElseThrow(() -> new NoSuchElementException("Trade with id: " + id + " does not exist!"));
         return tradeMapper.fromTradeEntityToTradeResponseDTO(trade);
+    }
+
+    public TradeEntity getTradeEntityById(Long id) {
+        return tradeRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Trade with id: " + id + " does not exist!"));
     }
 
     public String addTrade(TradeCreateDTO tradeCreateDTO) {
         var trade = tradeMapper.fromTradeCreateDTOToTradeEntity(tradeCreateDTO);
-        tradeRepository.save(trade);
-
         var item = itemRepository.findItemEntityById(trade.getItemEntity().getId());
         item.setStatus(StatusValidator.UNAVAILABLE);
+        trade.setUserId(userRepository.findUser(tradeCreateDTO.userId()));
+        trade.setItemEntity(item);
         itemRepository.save(item);
+        tradeRepository.save(trade);
 
         return "Successfully bought an item!";
     }

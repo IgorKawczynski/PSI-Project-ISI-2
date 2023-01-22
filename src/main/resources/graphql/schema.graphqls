@@ -57,7 +57,7 @@ type Mutation {
   deleteItemById(id: ID): ID
 
   addTrade(trade: TradeDTO): Trade
-  updateTradeById(id: ID, value: Int): Trade
+  updateTradeById(id: ID, value: Int, buyerId: Int, sellerId: Int): Trade
   deleteTradeById(id: ID): ID
 }
 

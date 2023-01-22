@@ -32,7 +32,14 @@ type Query {
   getAllAddresses: [Address]
   getAddressById(id: ID): Address
 
+  getAllUsers: [User]
+  getUserById(id: ID): User
 
+  getAllItems: [Item]
+  getItemById(id: ID): Item
+
+  getAllTrades: [Trade]
+  getTradeById(id: ID): Trade
 }
 
 type Mutation {
@@ -83,6 +90,7 @@ type Trade {
   sellerId: Int
 }
 
+# Inputy potrzebne do metod typu create
 input AddressGRAPHQL {
   id: ID
   city: String

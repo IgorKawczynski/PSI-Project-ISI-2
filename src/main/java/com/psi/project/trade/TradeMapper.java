@@ -29,8 +29,7 @@ public class TradeMapper {
     public TradeResponseDTO fromTradeEntityToTradeResponseDTO(TradeEntity tradeEntity) {
         return TradeResponseDTO.builder()
                 .value(tradeEntity.getValue().toDouble())
-                .itemEntity(tradeEntity.getItemEntity())
-//                .itemEntity(itemRepository.findItemEntityById(tradeEntity.getItemEntity().getId()))
+                .item(tradeEntity.getItemEntity().getId())
                 .build();
     }
 

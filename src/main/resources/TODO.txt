@@ -17,18 +17,18 @@
                 -Content type
 
 2. Część zaimplementowana w GraphQL ---------------------------------------------------------------------------------------------
-   a) Stwórz nowy projekt w Django, -- OK
-   b) Przygotuj co najmniej 3 modele połączone kluczami obcymi - można się posiłkować aplikacją REST, -- OK
-   c) Zmigruj modele na bazę zewnętrzną, -- OK
-   d) Przygotuj plik schema z odpowiednimi klasami opartymi o DjangoObjectType, -- OK
-   e) Przygotuj klasę Query wyświetlającą dane, -- OK
-   f) Przygotuj mutację dla poszczególnych modeli obsługujące dodawanie, modyfikację i usuwanie danych, -- nieOK
-   g) Dodaj ścieżkę dla GraphQL w pliku urls.py, -- OK
-   h) Zarejestruj modele w pliku admin.py, -- OK?
-   i) Stwórz superusera, -- nieOK
-   j) Dodaj przykładowe dane z poziomu admina, -- nieOK
-   k) Przygotuj 5 przykładowych zapytań, w wykorzystaniem danych z wielu modeli, -- nieOK
-   l) Stwórz 5 przykładowych mutacji. -- nieOK
+   a) Stwórz nowy projekt w Django, -- Zrobione
+   b) Przygotuj co najmniej 3 modele połączone kluczami obcymi - można się posiłkować aplikacją REST, -- Zrobione
+   c) Zmigruj modele na bazę zewnętrzną, -- Zrobione
+   d) Przygotuj plik schema z odpowiednimi klasami opartymi o DjangoObjectType, -- Zrobione
+   e) Przygotuj klasę Query wyświetlającą dane, -- Zrobione
+   f) Przygotuj mutację dla poszczególnych modeli obsługujące dodawanie, modyfikację i usuwanie danych, -- Zrobione
+   g) Dodaj ścieżkę dla GraphQL w pliku urls.py, -- Zrobione
+   h) Zarejestruj modele w pliku admin.py, -- Zrobione
+   i) Stwórz superusera, -- Zrobione
+   j) Dodaj przykładowe dane z poziomu admina, -- Zrobione
+   k) Przygotuj 5 przykładowych zapytań, w wykorzystaniem danych z wielu modeli, -- Zrobione
+   l) Stwórz 5 przykładowych mutacji. -- Zrobione
 
 ********************************* NOTES *********************************
 

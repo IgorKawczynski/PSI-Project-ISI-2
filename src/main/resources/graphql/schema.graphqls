@@ -1,8 +1,57 @@
+#schema {
+#  query: Query,
+##  mutation: Mutation,
+#}
+
 type Query {
+  # Metody oparte na samym modelu
+  allAddresses: [Address]
   addressById(id: ID): Address
+  addressByCity(city: String): Address
+  addressByStreet(street: String): Address
+
+  allUsers: [User]
   userById(id: ID): User
+  userByFirstName(firstName: String): User
+  userByLastName(lastName: String): User
+  userByEmail(email: String): User
+
+  allItems: [Item]
   itemById(id: ID): Item
+  itemByName(name: String): Item
+  itemByCost(cost: Int): Item
+  itemByUser(userId: Int): Item
+
+  allTrades: [Trade]
   tradeById(id: ID): Trade
+  tradeByValue(value: Int): Trade
+  tradeByBuyer(buyerId: Int): Trade
+  tradeBySeller(sellerId: Int): Trade
+
+  # Metody oparte na bazie danych zmigrowanej z modeli GraphQL
+  getAllAddresses: [Address]
+  getAddressById(id: ID): Address
+
+
+}
+
+type Mutation {
+  # Metody oparte na bazie danych zmigrowanej z modeli GraphQL
+  addAddress(address: AddressGRAPHQL): Address
+  updateAddressById(id: ID, city: String, street: String): Address
+  deleteAddressById(id: ID): ID
+
+  addUser(user: UserGRAPHQL): User
+  updateUserById(id: ID, email: String, firstName: String, lastName: String, pesel: String): User
+  deleteUserById(id: ID): ID
+
+  addItem(item: ItemGRAPHQL): Item
+  updateItemById(id: ID, name: String, cost: Int): Item
+  deleteItemById(id: ID): ID
+
+  addTrade(trade: TradeGRAPHQL): Trade
+  updateTradeById(id: ID, value: Int): Trade
+  deleteTradeById(id: ID): ID
 }
 
 type Address {
@@ -17,21 +66,50 @@ type User {
   firstName: String
   lastName: String
   pesel: String
-  address: Address
+  addressId: Int
 }
 
 type Item {
   id: ID
   name: String
   cost: Int
-  user: User
+  userId: Int
 }
 
 type Trade {
   id: ID
   value: Int
-  buyer: User
-  seller: User
+  buyerId: Int
+  sellerId: Int
+}
+
+input AddressGRAPHQL {
+  id: ID
+  city: String
+  street: String
+}
+
+input UserGRAPHQL {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  pesel: String
+  addressId: Int
+}
+
+input ItemGRAPHQL {
+  id: ID
+  name: String
+  cost: Int
+  userId: Int
+}
+
+input TradeGRAPHQL {
+  id: ID
+  value: Int
+  buyerId: Int
+  sellerId: Int
 }
 
 

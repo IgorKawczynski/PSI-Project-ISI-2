@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TradeGRAPHQLRepository extends JpaRepository<TradeGRAPHQL, Integer> {
+
+    TradeGRAPHQL findTradeGRAPHQLById(Integer id);
 }

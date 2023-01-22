@@ -1,19 +1,32 @@
 package com.psi.project.graphql.user;
 
 
+import com.psi.project.graphql.item.ItemGRAPHQL;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "USERS_GRAPHQL")
 public class UserGRAPHQL {
 
-    private final String id;
-    private final String email;
-    private final String firstName;
-    private final String lastName;
-    private final String pesel;
-    private final String addressId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String pesel;
+    private Integer addressId;
 
-    public UserGRAPHQL(String id, String email, String firstName, String lastName, String pesel, String addressId) {
+    public UserGRAPHQL(Integer id, String email, String firstName, String lastName, String pesel, Integer addressId) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -23,44 +36,61 @@ public class UserGRAPHQL {
     }
 
     private static final List<UserGRAPHQL> users = Arrays.asList(
-            new UserGRAPHQL("1 User",
+            new UserGRAPHQL(1,
                     "emailPierwszy@op.pl",
                     "Ignacy",
                     "Dobromir",
                     "01382500669",
-                    "2 Address"),
-            new UserGRAPHQL("2 User",
+                    2),
+            new UserGRAPHQL(2,
                     "emailDrugi@op.pl",
                     "Arkadia",
                     "Fajna",
                     "02482564669",
-                    "1 Address"),
-            new UserGRAPHQL("3 User",
+                    1),
+            new UserGRAPHQL(3,
                     "emailTrzeci@op.pl",
                     "Konrad",
                     "Wierzba",
                     "05812500767",
-                    "5 Address"),
-            new UserGRAPHQL("4 User",
+                    5),
+            new UserGRAPHQL(4,
                     "emailCzwarty@op.pl",
                     "Krystyna",
                     "Ronualdzka",
                     "02482504669",
-                    "4 Address"),
-            new UserGRAPHQL("5 User",
+                    4),
+            new UserGRAPHQL(5,
                     "emailPiaty@op.pl",
                     "Leonard",
                     "Meszyński",
                     "06613504551",
-                    "3 Address")
+                    3)
     );
 
-    public static UserGRAPHQL getById(String id) {
+    public static UserGRAPHQL getById(Integer id) {
         return users
                 .stream()
                 .filter(user -> user.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static List<UserGRAPHQL> getAllUsers() {
+        return users;
+    }
+
+    public static UserGRAPHQL updateById(Integer id, String email, String firstName, String lastName, String pesel) {
+        var user = users
+                .stream()
+                .filter(userX -> userX.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPesel(pesel);
+        return user;
     }
 
     public static UserGRAPHQL getByEmail(String email) {
@@ -95,7 +125,7 @@ public class UserGRAPHQL {
                 .orElse(null);
     }
 
-    public static UserGRAPHQL getByAddress(String addressId) {
+    public static UserGRAPHQL getByAddress(Integer addressId) {
         return users
                 .stream()
                 .filter(user -> user.getAddress().equals(addressId))
@@ -103,7 +133,7 @@ public class UserGRAPHQL {
                 .orElse(null);
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -123,7 +153,7 @@ public class UserGRAPHQL {
         return pesel;
     }
 
-    public String getAddress() {
+    public Integer getAddress() {
         return addressId;
     }
 

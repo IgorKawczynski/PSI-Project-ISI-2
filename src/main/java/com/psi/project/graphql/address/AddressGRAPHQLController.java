@@ -14,6 +14,9 @@ public class AddressGRAPHQLController {
     @Autowired
     private AddressGRAPHQLService addressGRAPHQLService;
 
+    /**
+     Metody Korzystające tylko z modelu (nie połączone z bazą danych)
+     */
     @QueryMapping
     public AddressGRAPHQL addressById(@Argument Integer id) {
         return AddressGRAPHQL.getById(id);
@@ -34,6 +37,10 @@ public class AddressGRAPHQLController {
         return AddressGRAPHQL.getAllAddresses();
     }
 
+
+    /**
+     Metody Korzystające z serwisu - połączone z bazą danych
+     */
     @QueryMapping
     public List<AddressGRAPHQL> getAllAddresses() {
         return addressGRAPHQLService.getAllAddresses();

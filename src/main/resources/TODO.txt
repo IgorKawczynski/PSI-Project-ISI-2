@@ -1,20 +1,20 @@
 ********************************* THINGS TO DO *********************************
 
 1. TESTY
-    a) Do wybranych dwóch modeli dodaj właściciela, jako użytkownika wbudowanego w Django
-    b) Ustaw różne opcje praw dostępu dla poszczególnych modeli - tak, aby były w miarę sensowne
-    c) Przy dodawaniu rekordów do modeli z właścicielem - ustaw automatycznie właściciela jako użytkownika, który dany rekord stworzył
-    d) Dodaj widoki dla użytkowników bez możliwości modyfikacji
+    a) Do wybranych dwóch modeli dodaj właściciela, jako użytkownika wbudowanego w Django - Zrobione (Admin ma taki, Client ma taki dostęp)
+    b) Ustaw różne opcje praw dostępu dla poszczególnych modeli - tak, aby były w miarę sensowne - Zrobione, j.w.
+    c) Przy dodawaniu rekordów do modeli z właścicielem - ustaw automatycznie właściciela jako użytkownika, który dany rekord stworzył - Nie zrobione
+    d) Dodaj widoki dla użytkowników bez możliwości modyfikacji - Zrobione, j.w.
     e) Zadania dotyczące testowania w oparciu o POSTMANa:
-        a2) Stwórz kolekcję, która będzie zawierała Requesty "GET, POST, PUT, DELETE"
-        b2) Użyj zmiennych lokalnych, globalnych i środowiskowych
-        c2) Stwórz testy, które będą pobierały i porównywały wcześniej stworzone zmienne w testach
-        d2) Za pomocą testów stwórz i zapisz nowe zmienne globalne, lokalne i środowiskowe.
-        e2) Stwórz Testy , które będą sprawdzały:
-                -kod odpowiedzi (201 lub 202)
-                -Czas odpowiedzi mniejszy niż (np. 300ms)
-                -Status odpowiedzi "OK"
-                -Content type
+        a2) Stwórz kolekcję, która będzie zawierała Requesty "GET, POST, PUT, DELETE" - Zrobione, kolekcja pobrana ze swagger'a
+        b2) Użyj zmiennych lokalnych, globalnych i środowiskowych - Zrobione, zmienna globalna jako apiUrl, zmienna lokalna/środowiskowa jako ID (parametr do getów lub updateow lub deleteow)
+        c2) Stwórz testy, które będą pobierały i porównywały wcześniej stworzone zmienne w testach - Zrobione
+        d2) Za pomocą testów stwórz i zapisz nowe zmienne globalne, lokalne i środowiskowe. - Zrobione, wszystko w teście
+        e2) Stwórz Testy, które będą sprawdzały: -- Zrobione
+                -kod odpowiedzi (201 lub 202)  -- Zrobione
+                -Czas odpowiedzi mniejszy niż (np. 300ms)  -- Zrobione
+                -Status odpowiedzi "OK"  -- Zrobione
+                -Content type  -- Zrobione
 
 2. Część zaimplementowana w GraphQL ---------------------------------------------------------------------------------------------
    a) Stwórz nowy projekt w Django, -- Zrobione

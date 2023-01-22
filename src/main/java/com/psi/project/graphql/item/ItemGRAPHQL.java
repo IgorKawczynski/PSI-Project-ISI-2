@@ -1,17 +1,31 @@
 package com.psi.project.graphql.item;
 
 
+import com.psi.project.graphql.address.AddressGRAPHQL;
+import io.swagger.models.auth.In;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "ITEM_GRAPHQL")
 public class ItemGRAPHQL {
 
-    private final String id;
-    private final String name;
-    private final Integer cost;
-    private final String userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private Integer cost;
+    private Integer userId;
 
-    public ItemGRAPHQL(String id, String name, Integer cost, String userId) {
+    public ItemGRAPHQL(Integer id, String name, Integer cost, Integer userId) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -19,19 +33,34 @@ public class ItemGRAPHQL {
     }
 
     private static final List<ItemGRAPHQL> items = Arrays.asList(
-            new ItemGRAPHQL("1 Item", "TaniaRzecz", 54, "3 user"),
-            new ItemGRAPHQL("2 Item", "Intel Core i9 128K", 1024, "4 user"),
-            new ItemGRAPHQL("3 Item", "5GB RAM", 512, "1 user"),
-            new ItemGRAPHQL("4 Item", "Ciupaga", 256, "2 user"),
-            new ItemGRAPHQL("5 Item", "DrogaRzecz", 4096, "5 user")
+            new ItemGRAPHQL(1, "TaniaRzecz", 54, 3),
+            new ItemGRAPHQL(2, "Intel Core i9 128K", 1024, 4),
+            new ItemGRAPHQL(3, "5GB RAM", 512, 1),
+            new ItemGRAPHQL(4, "Ciupaga", 256, 2),
+            new ItemGRAPHQL(5, "DrogaRzecz", 4096, 5)
     );
 
-    public static ItemGRAPHQL getById(String id) {
+    public static ItemGRAPHQL getById(Integer id) {
         return items
                 .stream()
                 .filter(item -> item.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static List<ItemGRAPHQL> getAllItems() {
+        return items;
+    }
+
+    public static ItemGRAPHQL updateById(Integer id, String name, Integer cost) {
+        var item = items
+                .stream()
+                .filter(itemX -> itemX.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+        item.setName(name);
+        item.setCost(cost);
+        return item;
     }
 
     public static ItemGRAPHQL getByName(String name) {
@@ -50,7 +79,7 @@ public class ItemGRAPHQL {
                 .orElse(null);
     }
 
-    public static ItemGRAPHQL getByUser(String userId) {
+    public static ItemGRAPHQL getByUser(Integer userId) {
         return items
                 .stream()
                 .filter(item -> item.getUserId().equals(userId))
@@ -58,7 +87,7 @@ public class ItemGRAPHQL {
                 .orElse(null);
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -70,7 +99,7 @@ public class ItemGRAPHQL {
         return cost;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

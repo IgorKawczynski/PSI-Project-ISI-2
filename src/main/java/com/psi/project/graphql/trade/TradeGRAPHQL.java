@@ -1,18 +1,31 @@
 package com.psi.project.graphql.trade;
 
 
+import com.psi.project.graphql.item.ItemGRAPHQL;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "TRADE_GRAPHQL")
 public class TradeGRAPHQL {
 
-    private final String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Integer value;
+    private Integer buyerId;
+    private Integer sellerId;
 
-    private final Integer value;
-    private final String buyerId;
-    private final String sellerId;
-
-    public TradeGRAPHQL(String id, Integer value, String buyerId, String sellerId) {
+    public TradeGRAPHQL(Integer id, Integer value, Integer buyerId, Integer sellerId) {
         this.id = id;
         this.value = value;
         this.buyerId = buyerId;
@@ -20,19 +33,33 @@ public class TradeGRAPHQL {
     }
 
     private static final List<TradeGRAPHQL> trades = Arrays.asList(
-            new TradeGRAPHQL("1 Trade",  54, "3 user", "2 user"),
-            new TradeGRAPHQL("2 Trade",  212, "1 user", "2 user"),
-            new TradeGRAPHQL("3 Trade",  5133, "2 user", "3 user"),
-            new TradeGRAPHQL("4 Trade",  4097, "5 user", "4 user"),
-            new TradeGRAPHQL("5 Trade",  2256, "5 user", "1 user")
+            new TradeGRAPHQL(1,  54, 3, 2),
+            new TradeGRAPHQL(2,  212, 1, 2),
+            new TradeGRAPHQL(3,  5133, 2, 3),
+            new TradeGRAPHQL(4,  4097, 5, 4),
+            new TradeGRAPHQL(5,  2256, 5, 1)
     );
 
-    public static TradeGRAPHQL getById(String id) {
+    public static TradeGRAPHQL getById(Integer id) {
         return trades
                 .stream()
                 .filter(trade -> trade.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static List<TradeGRAPHQL> getAllTrades() {
+        return trades;
+    }
+
+    public static TradeGRAPHQL updateById(Integer id, Integer value) {
+        var trade = trades
+                .stream()
+                .filter(tradeX -> tradeX.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+        trade.setValue(value);
+        return trade;
     }
 
     public static TradeGRAPHQL getByValue(Integer value) {
@@ -43,7 +70,7 @@ public class TradeGRAPHQL {
                 .orElse(null);
     }
 
-    public static TradeGRAPHQL getByBuyer(String buyerId) {
+    public static TradeGRAPHQL getByBuyer(Integer buyerId) {
         return trades
                 .stream()
                 .filter(trade -> trade.getBuyerId().equals(buyerId))
@@ -51,7 +78,7 @@ public class TradeGRAPHQL {
                 .orElse(null);
     }
 
-    public static TradeGRAPHQL getBySeller(String sellerId) {
+    public static TradeGRAPHQL getBySeller(Integer sellerId) {
         return trades
                 .stream()
                 .filter(trade -> trade.getSellerId().equals(sellerId))
@@ -59,7 +86,7 @@ public class TradeGRAPHQL {
                 .orElse(null);
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -67,11 +94,11 @@ public class TradeGRAPHQL {
         return value;
     }
 
-    public String getBuyerId() {
+    public Integer getBuyerId() {
         return buyerId;
     }
 
-    public String getSellerId() {
+    public Integer getSellerId() {
         return sellerId;
     }
 }

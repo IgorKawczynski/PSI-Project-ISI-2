@@ -44,19 +44,19 @@ type Query {
 
 type Mutation {
   # Metody oparte na bazie danych zmigrowanej z modeli GraphQL
-  addAddress(address: AddressGRAPHQL): Address
+  addAddress(address: AddressDTO): Address
   updateAddressById(id: ID, city: String, street: String): Address
   deleteAddressById(id: ID): ID
 
-  addUser(user: UserGRAPHQL): User
+  addUser(user: UserDTO): User
   updateUserById(id: ID, email: String, firstName: String, lastName: String, pesel: String): User
   deleteUserById(id: ID): ID
 
-  addItem(item: ItemGRAPHQL): Item
+  addItem(item: ItemDTO): Item
   updateItemById(id: ID, name: String, cost: Int): Item
   deleteItemById(id: ID): ID
 
-  addTrade(trade: TradeGRAPHQL): Trade
+  addTrade(trade: TradeDTO): Trade
   updateTradeById(id: ID, value: Int): Trade
   deleteTradeById(id: ID): ID
 }
@@ -91,13 +91,13 @@ type Trade {
 }
 
 # Inputy potrzebne do metod typu create
-input AddressGRAPHQL {
+input AddressDTO {
   id: ID
   city: String
   street: String
 }
 
-input UserGRAPHQL {
+input UserDTO {
   id: ID
   email: String
   firstName: String
@@ -106,14 +106,14 @@ input UserGRAPHQL {
   addressId: Int
 }
 
-input ItemGRAPHQL {
+input ItemDTO {
   id: ID
   name: String
   cost: Int
   userId: Int
 }
 
-input TradeGRAPHQL {
+input TradeDTO {
   id: ID
   value: Int
   buyerId: Int
